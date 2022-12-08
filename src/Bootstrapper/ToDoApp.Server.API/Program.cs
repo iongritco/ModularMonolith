@@ -1,4 +1,7 @@
-namespace ToDoApp.Bootstrapper
+using ToDoApp.Modules.Tasks.Api;
+using ToDoApp.Modules.Users.Api;
+
+namespace ToDoApp.Server.API
 {
     public class Program
     {
@@ -6,16 +9,16 @@ namespace ToDoApp.Bootstrapper
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+            // Add modules
+            builder.Services.AddTasksModule();
+            builder.Services.AddUsersModule();
 
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
@@ -25,6 +28,10 @@ namespace ToDoApp.Bootstrapper
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
+
+            // Use modules
+            app.UseTasksModule();
+            app.UseUsersModule();
 
 
             app.MapControllers();

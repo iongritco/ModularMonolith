@@ -11,4 +11,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Modules\Tasks\ToDoApp.Modules.Tasks.Api\ToDoApp.Modules.Tasks.API.csproj" />
+    <ProjectReference Include="..\..\Modules\Users\ToDoApp.Modules.Users.Api\ToDoApp.Modules.Users.API.csproj" />
+  </ItemGroup>
+
 </Project>
