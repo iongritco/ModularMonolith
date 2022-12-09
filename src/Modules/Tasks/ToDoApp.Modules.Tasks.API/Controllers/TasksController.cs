@@ -8,7 +8,7 @@ using ToDoApp.Modules.Tasks.Application.Queries;
 namespace ToDoApp.Modules.Tasks.API.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("tasks")]
     public class TasksController : ControllerBase
     {
         private readonly IMediator _mediator;

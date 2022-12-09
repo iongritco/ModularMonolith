@@ -12,6 +12,6 @@ namespace ToDoApp.Modules.Users.API
             _configuration = configuration;
         }
 
-        public string TokenKey { get => _configuration["JwtSecret"]; }
+        public string TokenKey => _configuration["JwtSecret"];
     }
 }

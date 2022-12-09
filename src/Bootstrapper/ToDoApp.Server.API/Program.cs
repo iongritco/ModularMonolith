@@ -1,7 +1,9 @@
+using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using ToDoApp.Modules.Tasks.API;
 using ToDoApp.Modules.Users.API;
+using ToDoApp.Server.API.Pipelines;
 
 namespace ToDoApp.Server.API
 {
@@ -13,9 +15,9 @@ namespace ToDoApp.Server.API
 
             // Add modules
             builder.Services.AddTasksModule(builder.Configuration);
-            builder.Services.AddUsersModule();
-
-            //builder.Services.AddIdentity<ApplicationUser, IdentityRole<Guid>>().AddEntityFrameworkStores<TasksContext>().AddDefaultTokenProviders();
+            builder.Services.AddUsersModule(builder.Configuration);
+            builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationHandler<,>));
+            builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPerformanceHandler<,>));
             builder.Services.AddAuthentication(
                     options =>
                     {
@@ -49,13 +51,11 @@ namespace ToDoApp.Server.API
             }
 
             app.UseHttpsRedirection();
-
             app.UseAuthorization();
 
             // Use modules
             app.UseTasksModule();
             app.UseUsersModule();
-
 
             app.MapControllers();
 
