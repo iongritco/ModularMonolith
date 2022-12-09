@@ -8,9 +8,6 @@ using ToDoApp.Client.Blazor.ViewModels;
 
 using System.Net.Http.Json;
 
-using ToDoApp.Application.User.Commands;
-using ToDoApp.Application.User.Queries;
-
 namespace ToDoApp.Client.Blazor.Services
 {
 
@@ -32,7 +29,7 @@ namespace ToDoApp.Client.Blazor.Services
 
         public async Task<string> Register(RegisterModel registerModel)
         {
-            var postTask = await _httpClient.PostAsJsonAsync("api/account/register", new RegisterUserCommand { Email = registerModel.Email, Password = registerModel.Password });
+            var postTask = await _httpClient.PostAsJsonAsync("api/users/register", new { Email = registerModel.Email, Password = registerModel.Password });
             var result = await postTask.Content.ReadAsStringAsync();
             return result;
         }
@@ -40,7 +37,7 @@ namespace ToDoApp.Client.Blazor.Services
         // PostJsonAsync throws an error when reading string result - this is why I switched to PostAsync
         public async Task<string> Login(LoginModel loginModel)
         {
-            var tokenTask = await _httpClient.PostAsJsonAsync("api/account/login", new GetTokenQuery { Username = loginModel.Email, Password = loginModel.Password });
+            var tokenTask = await _httpClient.PostAsJsonAsync("api/users/login", new { Username = loginModel.Email, Password = loginModel.Password });
             var token = await tokenTask.Content.ReadAsStringAsync();
             if (string.IsNullOrEmpty(token))
             {

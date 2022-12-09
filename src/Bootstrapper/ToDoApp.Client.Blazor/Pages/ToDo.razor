@@ -1,7 +1,5 @@
 ﻿@page "/todorest"
 @inject HttpClient Http
-@using ToDoApp.Entity.Entities
-@using ToDoApp.Entity.Enums
 @using Microsoft.AspNetCore.Components.Authorization
 @inject NavigationManager NavigationManager
 @inject AuthenticationStateProvider AuthenticationStateProvider
@@ -52,7 +50,7 @@ else
 }
 
 @code {
-    List<ToDoItem> toDoList;
+    List<TaskModel> toDoList;
     private string newItem;
     private string currentUser;
 
@@ -67,7 +65,7 @@ else
         if (user.Identity.IsAuthenticated)
         {
             currentUser = user.Identity.Name;
-            toDoList = await Http.GetFromJsonAsync<List<ToDoItem>>("api/todo");
+            toDoList = await Http.GetFromJsonAsync<List<TaskModel>>("api/tasks");
         }
         else
         {
@@ -79,9 +77,9 @@ else
     {
         if (!string.IsNullOrWhiteSpace(newItem))
         {
-            var todo = new ToDoItem(newItem, currentUser);
+            var todo = new TaskModel { Id = Guid.NewGuid(), Description = newItem, Username = currentUser };
             toDoList.Add(todo);
-            await Http.PostAsJsonAsync("api/todo", new { description = newItem, id = todo.Id });
+            await Http.PostAsJsonAsync("api/tasks", new { description = newItem, id = todo.Id });
             newItem = string.Empty;
         }
     }
@@ -89,7 +87,7 @@ else
     private void RemoveTodo(Guid guid)
     {
         toDoList.Remove(toDoList.First(x => x.Id.Equals(guid)));
-        Http.DeleteAsync($"api/todo/{guid}");
+        Http.DeleteAsync($"api/tasks/{guid}");
     }
 
     private async Task StartTodo(Guid guid)
@@ -105,7 +103,7 @@ else
     private async Task UpdateTodo(Guid guid, Status status)
     {
         var todo = toDoList.First(x => x.Id.Equals(guid));
-        todo.SetStatus(status);
-        await Http.PutAsJsonAsync("api/todo", new { id = guid, description = todo.Description, status = todo.Status });
+        todo.Status = status;
+        await Http.PutAsJsonAsync("api/tasks", new { id = guid, description = todo.Description, status = todo.Status });
     }
 }

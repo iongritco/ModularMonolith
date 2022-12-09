@@ -8,7 +8,7 @@ using ToDoApp.Modules.Tasks.Application.Queries;
 
 namespace ToDoApp.Modules.Tasks.API.Controllers
 {
-    [Route("tasks")]
+    [Route("api/tasks")]
     [ApiController]
     [Authorize]
     public class TasksController : ControllerBase

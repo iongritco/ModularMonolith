@@ -31,7 +31,7 @@
             }
 
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", savedToken);
-            var username = await _httpClient.GetFromJsonAsync<string>("api/account/currentuser");
+            var username = await _httpClient.GetFromJsonAsync<string>("api/users/me/name");
             var identity = !string.IsNullOrEmpty(username) ? new ClaimsIdentity(new[] { new Claim(ClaimTypes.Name, username) }, "apiauth") : new ClaimsIdentity();
 
             return new AuthenticationState(new ClaimsPrincipal(identity));

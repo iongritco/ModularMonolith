@@ -6,7 +6,7 @@ using ToDoApp.Modules.Users.Application.Queries;
 
 namespace ToDoApp.Modules.Users.API.Controllers
 {
-    [Route("users")]
+    [Route("api/users")]
     [ApiController]
     [Authorize]
     public class UsersController : ControllerBase
