@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ToDoApp.Modules.Tasks.Application.Commands.CreateTask;
 using ToDoApp.Modules.Tasks.Application.Commands.DeleteTask;
@@ -7,8 +8,9 @@ using ToDoApp.Modules.Tasks.Application.Queries;
 
 namespace ToDoApp.Modules.Tasks.API.Controllers
 {
-    [ApiController]
     [Route("tasks")]
+    [ApiController]
+    [Authorize]
     public class TasksController : ControllerBase
     {
         private readonly IMediator _mediator;

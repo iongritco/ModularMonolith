@@ -16,8 +16,10 @@ namespace ToDoApp.Server.API
             // Add modules
             builder.Services.AddTasksModule(builder.Configuration);
             builder.Services.AddUsersModule(builder.Configuration);
+            
             builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationHandler<,>));
             builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPerformanceHandler<,>));
+            
             builder.Services.AddAuthentication(
                     options =>
                     {
@@ -51,12 +53,12 @@ namespace ToDoApp.Server.API
             }
 
             app.UseHttpsRedirection();
-            app.UseAuthorization();
 
             // Use modules
             app.UseTasksModule();
             app.UseUsersModule();
 
+            app.UseAuthorization();
             app.MapControllers();
 
             app.Run();

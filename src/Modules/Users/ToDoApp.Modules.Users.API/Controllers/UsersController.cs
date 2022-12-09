@@ -6,8 +6,9 @@ using ToDoApp.Modules.Users.Application.Queries;
 
 namespace ToDoApp.Modules.Users.API.Controllers
 {
-    [ApiController]
     [Route("users")]
+    [ApiController]
+    [Authorize]
     public class UsersController : ControllerBase
     {
         private readonly IMediator _mediator;
