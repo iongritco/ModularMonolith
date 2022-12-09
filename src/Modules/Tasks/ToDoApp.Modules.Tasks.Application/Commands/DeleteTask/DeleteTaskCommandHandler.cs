@@ -6,10 +6,10 @@ namespace ToDoApp.Modules.Tasks.Application.Commands.DeleteTask
 {
     public class DeleteToDoCommandHandler : IRequestHandler<DeleteToDoCommand>
     {
-        private readonly IToDoCommandRepository _commandRepository;
-        private readonly IToDoQueryRepository _queryRepository;
+        private readonly ITasksCommandRepository _commandRepository;
+        private readonly ITasksQueryRepository _queryRepository;
 
-        public DeleteToDoCommandHandler(IToDoCommandRepository commandRepository, IToDoQueryRepository queryRepository)
+        public DeleteToDoCommandHandler(ITasksCommandRepository commandRepository, ITasksQueryRepository queryRepository)
         {
             _commandRepository = commandRepository;
             _queryRepository = queryRepository;

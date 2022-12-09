@@ -6,13 +6,13 @@ namespace ToDoApp.Modules.Tasks.Application.Commands.UpdateTask
 {
     public class UpdateToDoCommandHandler : IRequestHandler<UpdateTaskCommand>
     {
-        private readonly IToDoCommandRepository _commandRepository;
-        private readonly IToDoQueryRepository _queryRepository;
+        private readonly ITasksCommandRepository _commandRepository;
+        private readonly ITasksQueryRepository _queryRepository;
         private readonly IMediator _mediator;
 
         public UpdateToDoCommandHandler(
-            IToDoCommandRepository commandRepository,
-            IToDoQueryRepository queryRepository,
+            ITasksCommandRepository commandRepository,
+            ITasksQueryRepository queryRepository,
             IMediator mediator)
         {
             _commandRepository = commandRepository;

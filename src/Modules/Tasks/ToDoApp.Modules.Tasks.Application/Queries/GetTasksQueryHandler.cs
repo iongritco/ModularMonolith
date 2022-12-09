@@ -7,11 +7,11 @@ namespace ToDoApp.Modules.Tasks.Application.Queries
 {
     public class GetTaskListQueryHandler : IRequestHandler<GetTasksQuery, List<ToDoItem>>
     {
-        private readonly IToDoQueryRepository _queryRepository;
+        private readonly ITasksQueryRepository _queryRepository;
 
-        public GetTaskListQueryHandler(IToDoQueryRepository toDoRepository)
+        public GetTaskListQueryHandler(ITasksQueryRepository queryRepository)
         {
-            _queryRepository = toDoRepository;
+            _queryRepository = queryRepository;
         }
 
         public async Task<List<ToDoItem>> Handle(GetTasksQuery request, CancellationToken cancellationToken)

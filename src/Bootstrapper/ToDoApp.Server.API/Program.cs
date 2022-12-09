@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using ToDoApp.Modules.Tasks.API;
 using ToDoApp.Modules.Tasks.Persistence;
@@ -16,10 +15,10 @@ namespace ToDoApp.Server.API
             var builder = WebApplication.CreateBuilder(args);
 
             // Add modules
-            builder.Services.AddTasksModule();
+            builder.Services.AddTasksModule(builder.Configuration);
             builder.Services.AddUsersModule();
 
-            builder.Services.AddIdentity<ApplicationUser, IdentityRole<Guid>>().AddEntityFrameworkStores<ToDoDataContext>().AddDefaultTokenProviders();
+            //builder.Services.AddIdentity<ApplicationUser, IdentityRole<Guid>>().AddEntityFrameworkStores<TasksContext>().AddDefaultTokenProviders();
             builder.Services.AddAuthentication(
                     options =>
                     {
@@ -44,7 +43,6 @@ namespace ToDoApp.Server.API
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-            builder.Services.AddDbContext<ToDoDataContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("ToDoDataConnection")));
             var app = builder.Build();
 
             if (app.Environment.IsDevelopment())

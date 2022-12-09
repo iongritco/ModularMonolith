@@ -3,7 +3,7 @@ using ToDoApp.Modules.Tasks.Domain.Entities;
 
 namespace ToDoApp.Modules.Tasks.Application.Interfaces
 {
-    public interface IToDoQueryRepository
+    public interface ITasksQueryRepository
     {
         Task<IEnumerable<ToDoItem>> GetToDoList(string username);
 

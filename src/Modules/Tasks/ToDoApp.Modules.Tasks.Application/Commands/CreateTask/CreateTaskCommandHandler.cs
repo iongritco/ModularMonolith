@@ -6,9 +6,9 @@ namespace ToDoApp.Modules.Tasks.Application.Commands.CreateTask
 {
     public class CreateToDoCommandHandler : IRequestHandler<CreateTaskCommand>
     {
-        private readonly IToDoCommandRepository _commandRepository;
+        private readonly ITasksCommandRepository _commandRepository;
 
-        public CreateToDoCommandHandler(IToDoCommandRepository commandRepository)
+        public CreateToDoCommandHandler(ITasksCommandRepository commandRepository)
         {
             _commandRepository = commandRepository;
         }
