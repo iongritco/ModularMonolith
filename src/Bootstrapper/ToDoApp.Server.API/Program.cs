@@ -1,10 +1,7 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using ToDoApp.Modules.Tasks.API;
-using ToDoApp.Modules.Tasks.Persistence;
 using ToDoApp.Modules.Users.API;
-using ToDoApp.Modules.Users.Identity.User;
 
 namespace ToDoApp.Server.API
 {

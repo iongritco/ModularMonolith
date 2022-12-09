@@ -28,7 +28,16 @@ namespace ToDoApp.Modules.Tasks.API
 
         public static IApplicationBuilder UseTasksModule(this IApplicationBuilder app)
         {
+            InitializeDatabase(app);
             return app;
+        }
+
+        private static void InitializeDatabase(IApplicationBuilder app)
+        {
+            using (var scope = app.ApplicationServices.GetService<IServiceScopeFactory>()?.CreateScope())
+            {
+                scope.ServiceProvider.GetRequiredService<TasksContext>().Database.Migrate();
+            }
         }
     }
 }

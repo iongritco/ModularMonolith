@@ -5,7 +5,7 @@ namespace ToDoApp.Modules.Tasks.Persistence
 {
     public class TasksContext : DbContext
     {
-        public TasksContext(DbContextOptions options)
+        public TasksContext(DbContextOptions<TasksContext> options)
             : base(options)
         {
         }

@@ -1,0 +1,2 @@
+Script for adding a new migration (update paths based on your needs):
+dotnet ef migrations add InitialCreate --verbose --project "C:\Projects\ModularMonolith-Me\src\Modules\Tasks\ToDoApp.Modules.Tasks.Persistence\ToDoApp.Modules.Tasks.Persistence.csproj" --startup-project "C:\Projects\ModularMonolith-Me\src\Bootstrapper\ToDoApp.Server.API\ToDoApp.Server.API.csproj" --context TasksContext
