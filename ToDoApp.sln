@@ -17,29 +17,37 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tasks", "Tasks", "{30FC2DB9
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Users", "Users", "{786E2C95-D686-48E0-A88F-872DBB558D98}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp.Modules.Tasks.API", "src\Modules\Tasks\ToDoApp.Modules.Tasks.Api\ToDoApp.Modules.Tasks.API.csproj", "{1E3181D5-F1C9-47AA-BF47-E1AD01F0EB85}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoApp.Modules.Tasks.API", "src\Modules\Tasks\ToDoApp.Modules.Tasks.Api\ToDoApp.Modules.Tasks.API.csproj", "{1E3181D5-F1C9-47AA-BF47-E1AD01F0EB85}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp.Modules.Users.API", "src\Modules\Users\ToDoApp.Modules.Users.Api\ToDoApp.Modules.Users.API.csproj", "{74093650-A02A-453E-9C4D-8883B7CF241A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoApp.Modules.Users.API", "src\Modules\Users\ToDoApp.Modules.Users.Api\ToDoApp.Modules.Users.API.csproj", "{74093650-A02A-453E-9C4D-8883B7CF241A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp.Tests.EndToEnd", "tests\ToDoApp.Tests.EndToEnd\ToDoApp.Tests.EndToEnd.csproj", "{F955A2FD-7E5B-4739-B134-103EF62509B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoApp.Tests.EndToEnd", "tests\ToDoApp.Tests.EndToEnd\ToDoApp.Tests.EndToEnd.csproj", "{F955A2FD-7E5B-4739-B134-103EF62509B6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoApp.Server.API", "src\Bootstrapper\ToDoApp.Server.API\ToDoApp.Server.API.csproj", "{1CFF4FCC-643A-4918-B1E1-980603B2B56D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoApp.Client.Blazor", "src\Bootstrapper\ToDoApp.Client.Blazor\ToDoApp.Client.Blazor.csproj", "{CD52B11A-90BF-4D95-A158-208D1CDC049D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp.Modules.Tasks.Domain", "src\Modules\Tasks\ToDoApp.Modules.Tasks.Domain\ToDoApp.Modules.Tasks.Domain.csproj", "{321B621F-1257-490A-9BBB-9361491F7826}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoApp.Modules.Tasks.Domain", "src\Modules\Tasks\ToDoApp.Modules.Tasks.Domain\ToDoApp.Modules.Tasks.Domain.csproj", "{321B621F-1257-490A-9BBB-9361491F7826}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp.Modules.Tasks.Application", "src\Modules\Tasks\ToDoApp.Modules.Tasks.Application\ToDoApp.Modules.Tasks.Application.csproj", "{37FFBEC9-4B2C-4BEC-AC7E-638672C43505}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoApp.Modules.Tasks.Application", "src\Modules\Tasks\ToDoApp.Modules.Tasks.Application\ToDoApp.Modules.Tasks.Application.csproj", "{37FFBEC9-4B2C-4BEC-AC7E-638672C43505}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp.Modules.Tasks.Persistence", "src\Modules\Tasks\ToDoApp.Modules.Tasks.Persistence\ToDoApp.Modules.Tasks.Persistence.csproj", "{7AFF401A-E246-409C-B3A2-16E26CC96296}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoApp.Modules.Tasks.Persistence", "src\Modules\Tasks\ToDoApp.Modules.Tasks.Persistence\ToDoApp.Modules.Tasks.Persistence.csproj", "{7AFF401A-E246-409C-B3A2-16E26CC96296}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp.Modules.Users.Application", "src\Modules\Users\ToDoApp.Modules.Users.Application\ToDoApp.Modules.Users.Application.csproj", "{DBE5B1A9-941E-4014-B22B-F47215B0C66C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoApp.Modules.Users.Application", "src\Modules\Users\ToDoApp.Modules.Users.Application\ToDoApp.Modules.Users.Application.csproj", "{DBE5B1A9-941E-4014-B22B-F47215B0C66C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp.Modules.Users.Identity", "src\Modules\Users\ToDoApp.Modules.Users.Identity\ToDoApp.Modules.Users.Identity.csproj", "{D2091FAC-17B1-4D83-93F4-8FFBA8CC563D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoApp.Modules.Users.Identity", "src\Modules\Users\ToDoApp.Modules.Users.Identity\ToDoApp.Modules.Users.Identity.csproj", "{D2091FAC-17B1-4D83-93F4-8FFBA8CC563D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp.Modules.Users.Persistence", "src\Modules\Users\ToDoApp.Modules.Users.Persistence\ToDoApp.Modules.Users.Persistence.csproj", "{AF1FE6BA-C88D-47FA-BACA-5F422C518ABF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoApp.Modules.Users.Persistence", "src\Modules\Users\ToDoApp.Modules.Users.Persistence\ToDoApp.Modules.Users.Persistence.csproj", "{AF1FE6BA-C88D-47FA-BACA-5F422C518ABF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp.Common", "src\Shared\ToDoApp.Common\ToDoApp.Common.csproj", "{E605EA4A-0B95-49A4-9EAC-923A5F0760BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoApp.Common", "src\Shared\ToDoApp.Common\ToDoApp.Common.csproj", "{E605EA4A-0B95-49A4-9EAC-923A5F0760BD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{19D172A5-13DB-4CBB-B4C4-E1548A875C5B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{77C98136-2C1E-4D62-8DF2-94311122D9C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp.Module.Tasks.Tests", "src\Modules\Tasks\Tests\ToDoApp.Module.Tasks.Tests\ToDoApp.Module.Tasks.Tests.csproj", "{56008EC9-9D23-4D0F-851F-35B3D9A35515}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp.Modules.Users.Tests", "src\Modules\Users\Tests\ToDoApp.Modules.Users.Tests\ToDoApp.Modules.Users.Tests.csproj", "{864EC1D5-CCAA-42C3-838D-4D58EEB8D6BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -95,6 +103,14 @@ Global
 		{E605EA4A-0B95-49A4-9EAC-923A5F0760BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E605EA4A-0B95-49A4-9EAC-923A5F0760BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E605EA4A-0B95-49A4-9EAC-923A5F0760BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56008EC9-9D23-4D0F-851F-35B3D9A35515}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56008EC9-9D23-4D0F-851F-35B3D9A35515}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56008EC9-9D23-4D0F-851F-35B3D9A35515}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56008EC9-9D23-4D0F-851F-35B3D9A35515}.Release|Any CPU.Build.0 = Release|Any CPU
+		{864EC1D5-CCAA-42C3-838D-4D58EEB8D6BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{864EC1D5-CCAA-42C3-838D-4D58EEB8D6BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{864EC1D5-CCAA-42C3-838D-4D58EEB8D6BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{864EC1D5-CCAA-42C3-838D-4D58EEB8D6BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -117,6 +133,10 @@ Global
 		{D2091FAC-17B1-4D83-93F4-8FFBA8CC563D} = {786E2C95-D686-48E0-A88F-872DBB558D98}
 		{AF1FE6BA-C88D-47FA-BACA-5F422C518ABF} = {786E2C95-D686-48E0-A88F-872DBB558D98}
 		{E605EA4A-0B95-49A4-9EAC-923A5F0760BD} = {1A1839D5-7E84-43CA-91E1-F0DDAF0288D7}
+		{19D172A5-13DB-4CBB-B4C4-E1548A875C5B} = {30FC2DB9-4745-4E73-890A-3BE8BCD27401}
+		{77C98136-2C1E-4D62-8DF2-94311122D9C2} = {786E2C95-D686-48E0-A88F-872DBB558D98}
+		{56008EC9-9D23-4D0F-851F-35B3D9A35515} = {19D172A5-13DB-4CBB-B4C4-E1548A875C5B}
+		{864EC1D5-CCAA-42C3-838D-4D58EEB8D6BD} = {77C98136-2C1E-4D62-8DF2-94311122D9C2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {81D53214-F5EC-42B4-AEC0-9FD0F52391DB}
