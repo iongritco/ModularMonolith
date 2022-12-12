@@ -45,7 +45,7 @@ namespace ToDoApp.Modules.Tasks.API.Controllers
 
         [HttpDelete]
         [Route("{id:guid}")]
-        public async Task<IActionResult> DeleteTask(string id)
+        public async Task<IActionResult> DeleteTask(Guid id)
         {
             var command = new DeleteToDoCommand(id, User.Identity.Name);
             await _mediator.Send(command);

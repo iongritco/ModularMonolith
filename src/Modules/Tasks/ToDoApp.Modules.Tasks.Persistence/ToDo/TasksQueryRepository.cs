@@ -11,7 +11,7 @@ namespace ToDoApp.Modules.Tasks.Persistence.ToDo
         public TasksQueryRepository(TasksContext tasksContext)
         {
             _tasksContext = tasksContext;
-            //_tasksContext.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+            _tasksContext.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
         }
 
 

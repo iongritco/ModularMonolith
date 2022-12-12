@@ -2,7 +2,6 @@
 {
     using System.Net.Http;
     using System.Net.Http.Headers;
-    using System.Net.Http.Json;
     using System.Security.Claims;
     using System.Threading.Tasks;
 
@@ -31,7 +30,7 @@
             }
 
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", savedToken);
-            var username = await _httpClient.GetFromJsonAsync<string>("api/users/me/name");
+            var username = await _httpClient.GetStringAsync("api/users/me/name");
             var identity = !string.IsNullOrEmpty(username) ? new ClaimsIdentity(new[] { new Claim(ClaimTypes.Name, username) }, "apiauth") : new ClaimsIdentity();
 
             return new AuthenticationState(new ClaimsPrincipal(identity));
