@@ -1,4 +1,4 @@
-﻿namespace ToDoApp.Client.Blazor
+﻿namespace ToDoApp.Client.Blazor.Services
 {
     using System.Net.Http;
     using System.Net.Http.Headers;

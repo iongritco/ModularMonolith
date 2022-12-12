@@ -10,6 +10,6 @@ namespace ToDoApp.Modules.Tasks.Application.Queries
             Username = username;
         }
 
-        public string Username { get; private set; }
+        public string Username { get; }
     }
 }
