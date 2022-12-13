@@ -52,7 +52,7 @@ namespace ToDoApp.Server.API
                 app.UseSwaggerUI();
             }
 
-            app.UseCors(builder => builder.WithOrigins("*")
+            app.UseCors(corsPolicyBuilder => corsPolicyBuilder.WithOrigins("*")
                 .AllowAnyMethod()
                 .AllowAnyHeader());
             app.UseHttpsRedirection();
