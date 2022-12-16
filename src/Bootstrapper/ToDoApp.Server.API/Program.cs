@@ -1,6 +1,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using ToDoApp.EventBus.MassTransit;
 using ToDoApp.Modules.Tasks.API;
 using ToDoApp.Modules.Users.API;
 using ToDoApp.Server.API.Pipelines;
@@ -19,7 +20,9 @@ namespace ToDoApp.Server.API
             
             builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationHandler<,>));
             builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPerformanceHandler<,>));
-            
+
+            builder.Services.AddMassTransit();
+
             builder.Services.AddAuthentication(
                     options =>
                     {

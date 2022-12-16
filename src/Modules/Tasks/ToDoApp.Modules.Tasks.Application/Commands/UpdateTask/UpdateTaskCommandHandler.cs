@@ -1,6 +1,8 @@
 ﻿using MediatR;
-using ToDoApp.Modules.Tasks.Application.Events;
+using ToDoApp.EventBus.Events;
+using ToDoApp.EventBus.Interfaces;
 using ToDoApp.Modules.Tasks.Application.Interfaces;
+using ToDoApp.Modules.Tasks.Domain.Enums;
 
 namespace ToDoApp.Modules.Tasks.Application.Commands.UpdateTask
 {
@@ -8,16 +10,16 @@ namespace ToDoApp.Modules.Tasks.Application.Commands.UpdateTask
     {
         private readonly ITasksCommandRepository _commandRepository;
         private readonly ITasksQueryRepository _queryRepository;
-        private readonly IMediator _mediator;
+        private readonly IEventBus _eventBus;
 
         public UpdateToDoCommandHandler(
             ITasksCommandRepository commandRepository,
             ITasksQueryRepository queryRepository,
-            IMediator mediator)
+            IEventBus eventBus)
         {
             _commandRepository = commandRepository;
             _queryRepository = queryRepository;
-            _mediator = mediator;
+            _eventBus = eventBus;
         }
 
         public async Task<Unit> Handle(UpdateTaskCommand request, CancellationToken cancellationToken)
@@ -27,7 +29,11 @@ namespace ToDoApp.Modules.Tasks.Application.Commands.UpdateTask
             toDo.SetStatus(request.Status);
 
             await _commandRepository.UpdateToDo(toDo);
-            await _mediator.Publish(new TaskUpdatedEvent(toDo.Username, toDo.Description, toDo.Status), cancellationToken);
+
+            if (request.Status == Status.Completed)
+            {
+                await _eventBus.Publish(new TaskCompletedEvent(toDo.Username, toDo.Description));
+            }
 
             return Unit.Value;
         }

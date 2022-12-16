@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Shared\ToDoApp.EventBus\ToDoApp.EventBus.csproj" />
     <ProjectReference Include="..\ToDoApp.Modules.Tasks.Domain\ToDoApp.Modules.Tasks.Domain.csproj" />
   </ItemGroup>
 

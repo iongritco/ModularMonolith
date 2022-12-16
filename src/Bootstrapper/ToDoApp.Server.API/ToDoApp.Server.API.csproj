@@ -21,6 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Modules\Tasks\ToDoApp.Modules.Tasks.API\ToDoApp.Modules.Tasks.API.csproj" />
     <ProjectReference Include="..\..\Modules\Users\ToDoApp.Modules.Users.API\ToDoApp.Modules.Users.API.csproj" />
+    <ProjectReference Include="..\..\Shared\ToDoApp.EventBus.MassTransit\ToDoApp.EventBus.MassTransit.csproj" />
   </ItemGroup>
 
 </Project>

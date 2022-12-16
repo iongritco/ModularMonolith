@@ -49,6 +49,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoApp.Modules.Tasks.API",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoApp.Modules.Users.API", "src\Modules\Users\ToDoApp.Modules.Users.API\ToDoApp.Modules.Users.API.csproj", "{B6822115-4308-4390-B252-6688DC5DE03D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp.EventBus", "src\Shared\ToDoApp.EventBus\ToDoApp.EventBus.csproj", "{21B60517-561B-456A-BF39-E11EFE38589E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp.EventBus.MassTransit", "src\Shared\ToDoApp.EventBus.MassTransit\ToDoApp.EventBus.MassTransit.csproj", "{1489F2C5-62BA-4290-94CC-350D1BD99D5D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -111,6 +115,14 @@ Global
 		{B6822115-4308-4390-B252-6688DC5DE03D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6822115-4308-4390-B252-6688DC5DE03D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6822115-4308-4390-B252-6688DC5DE03D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21B60517-561B-456A-BF39-E11EFE38589E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21B60517-561B-456A-BF39-E11EFE38589E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21B60517-561B-456A-BF39-E11EFE38589E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21B60517-561B-456A-BF39-E11EFE38589E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1489F2C5-62BA-4290-94CC-350D1BD99D5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1489F2C5-62BA-4290-94CC-350D1BD99D5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1489F2C5-62BA-4290-94CC-350D1BD99D5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1489F2C5-62BA-4290-94CC-350D1BD99D5D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -137,6 +149,8 @@ Global
 		{864EC1D5-CCAA-42C3-838D-4D58EEB8D6BD} = {77C98136-2C1E-4D62-8DF2-94311122D9C2}
 		{1B043FB8-D4EE-473B-A223-27BF05CA70B5} = {30FC2DB9-4745-4E73-890A-3BE8BCD27401}
 		{B6822115-4308-4390-B252-6688DC5DE03D} = {786E2C95-D686-48E0-A88F-872DBB558D98}
+		{21B60517-561B-456A-BF39-E11EFE38589E} = {1A1839D5-7E84-43CA-91E1-F0DDAF0288D7}
+		{1489F2C5-62BA-4290-94CC-350D1BD99D5D} = {1A1839D5-7E84-43CA-91E1-F0DDAF0288D7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {81D53214-F5EC-42B4-AEC0-9FD0F52391DB}
