@@ -23,7 +23,7 @@ namespace ToDoApp.Server.API
             // Add modules
             builder.Services.AddTasksModule(builder.Configuration);
             builder.Services.AddUsersModule(builder.Configuration);
-            builder.Services.AddEmailsModule();
+            builder.Services.AddEmailsModule(builder.Configuration);
             
             builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationHandler<,>));
             builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPerformanceHandler<,>));
