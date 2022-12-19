@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace ToDoApp.Modules.Users.Application.Queries
+namespace ToDoApp.Modules.Users.Application.Queries.GetToken
 {
     public class GetTokenValidator : AbstractValidator<GetTokenQuery>
     {

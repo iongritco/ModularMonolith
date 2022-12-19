@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using ToDoApp.Common.Generics;
 
-namespace ToDoApp.Modules.Users.Application.Commands
+namespace ToDoApp.Modules.Users.Application.Commands.RegisterUser
 {
     public class RegisterUserCommand : IRequest<Result>
     {

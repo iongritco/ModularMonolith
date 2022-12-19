@@ -8,5 +8,7 @@ namespace ToDoApp.Modules.Users.Application.Interfaces
         Task<bool> Authenticate(string username, string password);
 
         Task<Result> RegisterUser(string email, string password);
+
+        Task UpdateNumberOfTasks(string email);
     }
 }

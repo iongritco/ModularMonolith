@@ -49,9 +49,23 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoApp.Modules.Tasks.API",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoApp.Modules.Users.API", "src\Modules\Users\ToDoApp.Modules.Users.API\ToDoApp.Modules.Users.API.csproj", "{B6822115-4308-4390-B252-6688DC5DE03D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp.EventBus", "src\Shared\ToDoApp.EventBus\ToDoApp.EventBus.csproj", "{21B60517-561B-456A-BF39-E11EFE38589E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoApp.EventBus", "src\Shared\ToDoApp.EventBus\ToDoApp.EventBus.csproj", "{21B60517-561B-456A-BF39-E11EFE38589E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp.EventBus.MassTransit", "src\Shared\ToDoApp.EventBus.MassTransit\ToDoApp.EventBus.MassTransit.csproj", "{1489F2C5-62BA-4290-94CC-350D1BD99D5D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoApp.EventBus.MassTransit", "src\Shared\ToDoApp.EventBus.MassTransit\ToDoApp.EventBus.MassTransit.csproj", "{1489F2C5-62BA-4290-94CC-350D1BD99D5D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Emails", "Emails", "{BBAF3794-15DB-41F4-99E3-7BD52EB08A45}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoApp.Modules.Emails.API", "src\Modules\Emails\ToDoApp.Modules.Emails.API\ToDoApp.Modules.Emails.API.csproj", "{90C88F3F-DD7C-4D6C-9E10-A32160ED31E3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{27C617F9-5472-4D63-B5E3-15F406A79C3F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoApp.Modules.Emails.Domain", "src\Modules\Emails\ToDoApp.Modules.Emails.Domain\ToDoApp.Modules.Emails.Domain.csproj", "{7A971C55-A82C-404F-B663-13CCE6AF5BDD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoApp.Modules.Emails.Application", "src\Modules\Emails\ToDoApp.Modules.Emails.Application\ToDoApp.Modules.Emails.Application.csproj", "{6F8C9CA4-4B6D-4BEA-93A1-BC33073FC74E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp.Modules.Emails.Tests", "src\Modules\Emails\Tests\ToDoApp.Modules.Emails.Tests\ToDoApp.Modules.Emails.Tests.csproj", "{07E61277-D11F-4E12-B643-71484AF3EFC1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoApp.Modules.Emails.Infrastructure", "src\Modules\Emails\ToDoApp.Modules.Emails.Infrastructure\ToDoApp.Modules.Emails.Infrastructure.csproj", "{FEBB55E3-BABE-47E1-95CE-8A56AB050FF1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -123,6 +137,26 @@ Global
 		{1489F2C5-62BA-4290-94CC-350D1BD99D5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1489F2C5-62BA-4290-94CC-350D1BD99D5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1489F2C5-62BA-4290-94CC-350D1BD99D5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90C88F3F-DD7C-4D6C-9E10-A32160ED31E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90C88F3F-DD7C-4D6C-9E10-A32160ED31E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90C88F3F-DD7C-4D6C-9E10-A32160ED31E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90C88F3F-DD7C-4D6C-9E10-A32160ED31E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A971C55-A82C-404F-B663-13CCE6AF5BDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A971C55-A82C-404F-B663-13CCE6AF5BDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A971C55-A82C-404F-B663-13CCE6AF5BDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A971C55-A82C-404F-B663-13CCE6AF5BDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F8C9CA4-4B6D-4BEA-93A1-BC33073FC74E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F8C9CA4-4B6D-4BEA-93A1-BC33073FC74E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F8C9CA4-4B6D-4BEA-93A1-BC33073FC74E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F8C9CA4-4B6D-4BEA-93A1-BC33073FC74E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07E61277-D11F-4E12-B643-71484AF3EFC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07E61277-D11F-4E12-B643-71484AF3EFC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07E61277-D11F-4E12-B643-71484AF3EFC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07E61277-D11F-4E12-B643-71484AF3EFC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEBB55E3-BABE-47E1-95CE-8A56AB050FF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEBB55E3-BABE-47E1-95CE-8A56AB050FF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEBB55E3-BABE-47E1-95CE-8A56AB050FF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEBB55E3-BABE-47E1-95CE-8A56AB050FF1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -151,6 +185,13 @@ Global
 		{B6822115-4308-4390-B252-6688DC5DE03D} = {786E2C95-D686-48E0-A88F-872DBB558D98}
 		{21B60517-561B-456A-BF39-E11EFE38589E} = {1A1839D5-7E84-43CA-91E1-F0DDAF0288D7}
 		{1489F2C5-62BA-4290-94CC-350D1BD99D5D} = {1A1839D5-7E84-43CA-91E1-F0DDAF0288D7}
+		{BBAF3794-15DB-41F4-99E3-7BD52EB08A45} = {3FEDF684-0465-4C63-829B-FE589EDC012F}
+		{90C88F3F-DD7C-4D6C-9E10-A32160ED31E3} = {BBAF3794-15DB-41F4-99E3-7BD52EB08A45}
+		{27C617F9-5472-4D63-B5E3-15F406A79C3F} = {BBAF3794-15DB-41F4-99E3-7BD52EB08A45}
+		{7A971C55-A82C-404F-B663-13CCE6AF5BDD} = {BBAF3794-15DB-41F4-99E3-7BD52EB08A45}
+		{6F8C9CA4-4B6D-4BEA-93A1-BC33073FC74E} = {BBAF3794-15DB-41F4-99E3-7BD52EB08A45}
+		{07E61277-D11F-4E12-B643-71484AF3EFC1} = {27C617F9-5472-4D63-B5E3-15F406A79C3F}
+		{FEBB55E3-BABE-47E1-95CE-8A56AB050FF1} = {BBAF3794-15DB-41F4-99E3-7BD52EB08A45}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {81D53214-F5EC-42B4-AEC0-9FD0F52391DB}

@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using ToDoApp.Modules.Users.Application.Interfaces;
 
-namespace ToDoApp.Modules.Users.Application.Queries
+namespace ToDoApp.Modules.Users.Application.Queries.GetToken
 {
     public class GetTokenQueryHandler : IRequestHandler<GetTokenQuery, string>
     {

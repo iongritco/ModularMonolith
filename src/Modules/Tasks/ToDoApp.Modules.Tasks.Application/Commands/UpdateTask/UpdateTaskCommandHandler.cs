@@ -32,7 +32,7 @@ namespace ToDoApp.Modules.Tasks.Application.Commands.UpdateTask
 
             if (request.Status == Status.Completed)
             {
-                await _eventBus.Publish(new TaskCompletedEvent(toDo.Username, toDo.Description));
+                await _eventBus.Publish(new TaskCompletedEvent(toDo.Description, toDo.Username));
             }
 
             return Unit.Value;

@@ -30,5 +30,13 @@ namespace ToDoApp.Modules.Users.Identity.User
                     ? Result.Ok()
                     : Result.Fail(identityResult.Errors.Select(x => x.Description).Aggregate((a, b) => a + "; " + b));
         }
+
+        public async Task UpdateNumberOfTasks(string email)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+            user.NumberOfCompletedTasks += 1;
+
+            await _userManager.UpdateAsync(user);
+        }
     }
 }

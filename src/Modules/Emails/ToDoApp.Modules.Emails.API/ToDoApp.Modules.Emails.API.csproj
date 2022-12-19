@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Shared\ToDoApp.EventBus.MassTransit\ToDoApp.EventBus.MassTransit.csproj" />
+    <ProjectReference Include="..\ToDoApp.Modules.Emails.Application\ToDoApp.Modules.Emails.Application.csproj" />
+    <ProjectReference Include="..\ToDoApp.Modules.Emails.Infrastructure\ToDoApp.Modules.Emails.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

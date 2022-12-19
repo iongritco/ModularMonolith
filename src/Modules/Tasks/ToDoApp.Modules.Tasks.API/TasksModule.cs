@@ -16,8 +16,6 @@ namespace ToDoApp.Modules.Tasks.API
     {
         public static IServiceCollection AddTasksModule(this IServiceCollection services, ConfigurationManager configuration)
         {
-            services.AddMediatR(typeof(GetTasksQuery).GetTypeInfo().Assembly);
-            services.AddValidatorsFromAssembly(typeof(GetTasksQuery).GetTypeInfo().Assembly);
             services.AddTransient<ITasksQueryRepository, TasksQueryRepository>();
             services.AddTransient<ITasksCommandRepository, TasksCommandRepository>();
             services.AddDbContext<TasksContext>(options =>

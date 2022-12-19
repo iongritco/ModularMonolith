@@ -7,7 +7,7 @@ namespace ToDoApp.EventBus.MassTransit
 {
     public static class Extensions
     {
-        public static IServiceCollection AddMassTransit(this IServiceCollection services)
+        public static IServiceCollection AddMassTransit(this IServiceCollection services, params Assembly[] assemblies)
         {
             services.AddMassTransit(x =>
             {
@@ -15,12 +15,10 @@ namespace ToDoApp.EventBus.MassTransit
 
                 x.SetInMemorySagaRepositoryProvider();
 
-                var entryAssembly = Assembly.GetEntryAssembly();
-
-                x.AddConsumers(entryAssembly);
-                x.AddSagaStateMachines(entryAssembly);
-                x.AddSagas(entryAssembly);
-                x.AddActivities(entryAssembly);
+                x.AddConsumers(assemblies);
+                x.AddSagaStateMachines(assemblies);
+                x.AddSagas(assemblies);
+                x.AddActivities(assemblies);
 
                 x.UsingInMemory((context, cfg) => { cfg.ConfigureEndpoints(context); });
             });

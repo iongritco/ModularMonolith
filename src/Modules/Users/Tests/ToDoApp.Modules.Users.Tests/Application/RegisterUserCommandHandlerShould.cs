@@ -3,6 +3,7 @@ using FluentAssertions;
 using Moq;
 using ToDoApp.Common.Generics;
 using ToDoApp.Modules.Users.Application.Commands;
+using ToDoApp.Modules.Users.Application.Commands.RegisterUser;
 using ToDoApp.Modules.Users.Application.Interfaces;
 using Xunit;
 

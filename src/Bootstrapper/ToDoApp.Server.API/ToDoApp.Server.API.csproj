@@ -9,9 +9,9 @@
   <ItemGroup>
     <PackageReference Include="FluentValidation" Version="11.4.0" />
     <PackageReference Include="MediatR" Version="11.1.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.0">
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -19,6 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Modules\Emails\ToDoApp.Modules.Emails.API\ToDoApp.Modules.Emails.API.csproj" />
+    <ProjectReference Include="..\..\Modules\Email\ToDoApp.Modules.Email.API\ToDoApp.Modules.Emails.API.csproj" />
     <ProjectReference Include="..\..\Modules\Tasks\ToDoApp.Modules.Tasks.API\ToDoApp.Modules.Tasks.API.csproj" />
     <ProjectReference Include="..\..\Modules\Users\ToDoApp.Modules.Users.API\ToDoApp.Modules.Users.API.csproj" />
     <ProjectReference Include="..\..\Shared\ToDoApp.EventBus.MassTransit\ToDoApp.EventBus.MassTransit.csproj" />

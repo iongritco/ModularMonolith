@@ -2,7 +2,7 @@
 using FluentAssertions;
 using Moq;
 using ToDoApp.Modules.Users.Application.Interfaces;
-using ToDoApp.Modules.Users.Application.Queries;
+using ToDoApp.Modules.Users.Application.Queries.GetToken;
 using Xunit;
 
 namespace ToDoApp.Modules.Users.Tests.Application

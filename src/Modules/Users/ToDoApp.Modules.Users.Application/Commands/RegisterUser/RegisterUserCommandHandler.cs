@@ -2,7 +2,7 @@
 using ToDoApp.Common.Generics;
 using ToDoApp.Modules.Users.Application.Interfaces;
 
-namespace ToDoApp.Modules.Users.Application.Commands
+namespace ToDoApp.Modules.Users.Application.Commands.RegisterUser
 {
     public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, Result>
     {

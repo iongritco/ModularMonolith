@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace ToDoApp.Modules.Users.Application.Commands
+namespace ToDoApp.Modules.Users.Application.Commands.RegisterUser
 {
     public class RegisterUserCommandValidator : AbstractValidator<RegisterUserCommand>
     {
