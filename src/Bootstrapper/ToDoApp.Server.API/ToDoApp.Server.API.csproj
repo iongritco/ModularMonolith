@@ -7,19 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentValidation" Version="11.4.0" />
-    <PackageReference Include="MediatR" Version="11.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <TreatAsUsed>true</TreatAsUsed>
     </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Modules\Emails\ToDoApp.Modules.Emails.API\ToDoApp.Modules.Emails.API.csproj" />
+    <ProjectReference Include="..\..\Modules\Emails\ToDoApp.Modules.Emails.Application\ToDoApp.Modules.Emails.Application.csproj" />
     <ProjectReference Include="..\..\Modules\Email\ToDoApp.Modules.Email.API\ToDoApp.Modules.Emails.API.csproj" />
     <ProjectReference Include="..\..\Modules\Tasks\ToDoApp.Modules.Tasks.API\ToDoApp.Modules.Tasks.API.csproj" />
     <ProjectReference Include="..\..\Modules\Users\ToDoApp.Modules.Users.API\ToDoApp.Modules.Users.API.csproj" />

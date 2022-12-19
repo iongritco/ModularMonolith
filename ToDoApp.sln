@@ -67,6 +67,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp.Modules.Emails.Test
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoApp.Modules.Emails.Infrastructure", "src\Modules\Emails\ToDoApp.Modules.Emails.Infrastructure\ToDoApp.Modules.Emails.Infrastructure.csproj", "{FEBB55E3-BABE-47E1-95CE-8A56AB050FF1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp.Common.Tests", "src\Shared\ToDoApp.Common.Tests\ToDoApp.Common.Tests.csproj", "{E8631DE3-109F-4C67-B754-906539DF9CB5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -157,6 +159,10 @@ Global
 		{FEBB55E3-BABE-47E1-95CE-8A56AB050FF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FEBB55E3-BABE-47E1-95CE-8A56AB050FF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FEBB55E3-BABE-47E1-95CE-8A56AB050FF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8631DE3-109F-4C67-B754-906539DF9CB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8631DE3-109F-4C67-B754-906539DF9CB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8631DE3-109F-4C67-B754-906539DF9CB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8631DE3-109F-4C67-B754-906539DF9CB5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -192,6 +198,7 @@ Global
 		{6F8C9CA4-4B6D-4BEA-93A1-BC33073FC74E} = {BBAF3794-15DB-41F4-99E3-7BD52EB08A45}
 		{07E61277-D11F-4E12-B643-71484AF3EFC1} = {27C617F9-5472-4D63-B5E3-15F406A79C3F}
 		{FEBB55E3-BABE-47E1-95CE-8A56AB050FF1} = {BBAF3794-15DB-41F4-99E3-7BD52EB08A45}
+		{E8631DE3-109F-4C67-B754-906539DF9CB5} = {1A1839D5-7E84-43CA-91E1-F0DDAF0288D7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {81D53214-F5EC-42B4-AEC0-9FD0F52391DB}

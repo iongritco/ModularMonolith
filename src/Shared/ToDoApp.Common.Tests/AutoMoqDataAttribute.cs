@@ -2,7 +2,7 @@
 using AutoFixture.AutoMoq;
 using AutoFixture.Xunit2;
 
-namespace ToDoApp.Modules.Users.Tests
+namespace ToDoApp.Common.Tests
 {
     public class AutoMoqDataAttribute : AutoDataAttribute
     {

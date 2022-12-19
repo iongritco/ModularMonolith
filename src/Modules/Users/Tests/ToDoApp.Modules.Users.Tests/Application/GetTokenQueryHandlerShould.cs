@@ -1,6 +1,7 @@
 ﻿using AutoFixture.Xunit2;
 using FluentAssertions;
 using Moq;
+using ToDoApp.Common.Tests;
 using ToDoApp.Modules.Users.Application.Interfaces;
 using ToDoApp.Modules.Users.Application.Queries.GetToken;
 using Xunit;

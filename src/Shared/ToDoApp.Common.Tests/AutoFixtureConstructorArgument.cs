@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using AutoFixture.Kernel;
 
-namespace ToDoApp.Module.Tasks.Tests
+namespace ToDoApp.Common.Tests
 {
     public class AutoFixtureConstructorArgument : ISpecimenBuilder
     {

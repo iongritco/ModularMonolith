@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
 using ToDoApp.Modules.Emails.API.Configurations;
 using ToDoApp.Modules.Emails.Application.Interfaces;
 using ToDoApp.Modules.Emails.Infrastructure;

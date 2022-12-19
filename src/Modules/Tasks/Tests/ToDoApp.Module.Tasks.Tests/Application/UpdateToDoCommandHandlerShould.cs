@@ -2,6 +2,7 @@
 using FluentAssertions;
 using MediatR;
 using Moq;
+using ToDoApp.Common.Tests;
 using ToDoApp.EventBus.Events;
 using ToDoApp.EventBus.Interfaces;
 using ToDoApp.Modules.Tasks.Application.Commands.UpdateTask;

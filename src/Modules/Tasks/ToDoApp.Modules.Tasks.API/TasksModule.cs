@@ -1,11 +1,7 @@
-﻿using System.Reflection;
-using FluentValidation;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using ToDoApp.Modules.Tasks.Application.Interfaces;
-using ToDoApp.Modules.Tasks.Application.Queries;
 using ToDoApp.Modules.Tasks.Persistence.ToDo;
-using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using ToDoApp.Modules.Tasks.Persistence;

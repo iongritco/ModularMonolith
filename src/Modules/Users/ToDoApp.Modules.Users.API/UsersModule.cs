@@ -1,13 +1,9 @@
-﻿using System.Reflection;
-using FluentValidation;
-using MediatR;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ToDoApp.Modules.Users.Application.Interfaces;
-using ToDoApp.Modules.Users.Application.Queries.GetToken;
 using ToDoApp.Modules.Users.Identity.JwtToken;
 using ToDoApp.Modules.Users.Identity.User;
 using ToDoApp.Modules.Users.Persistence;

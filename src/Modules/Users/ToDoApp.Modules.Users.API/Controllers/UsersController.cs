@@ -1,7 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using ToDoApp.Modules.Users.Application.Commands;
 using ToDoApp.Modules.Users.Application.Commands.RegisterUser;
 using ToDoApp.Modules.Users.Application.Queries.GetToken;
 
