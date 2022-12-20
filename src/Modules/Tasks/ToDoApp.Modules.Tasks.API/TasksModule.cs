@@ -4,6 +4,8 @@ using ToDoApp.Modules.Tasks.Application.Interfaces;
 using ToDoApp.Modules.Tasks.Persistence.ToDo;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using ToDoApp.Modules.Tasks.Application.Clients;
+using ToDoApp.Modules.Tasks.Infrastructure;
 using ToDoApp.Modules.Tasks.Persistence;
 
 namespace ToDoApp.Modules.Tasks.API
@@ -12,8 +14,9 @@ namespace ToDoApp.Modules.Tasks.API
     {
         public static IServiceCollection AddTasksModule(this IServiceCollection services, ConfigurationManager configuration)
         {
-            services.AddTransient<ITasksQueryRepository, TasksQueryRepository>();
-            services.AddTransient<ITasksCommandRepository, TasksCommandRepository>();
+            services.AddScoped<ITasksQueryRepository, TasksQueryRepository>();
+            services.AddScoped<ITasksCommandRepository, TasksCommandRepository>();
+            services.AddScoped<IUsersApiClient, UsersApiClient>();
             services.AddDbContext<TasksContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("ToDoConnection")));
 
@@ -28,10 +31,8 @@ namespace ToDoApp.Modules.Tasks.API
 
         private static void InitializeDatabase(IApplicationBuilder app)
         {
-            using (var scope = app.ApplicationServices.GetService<IServiceScopeFactory>()?.CreateScope())
-            {
-                scope.ServiceProvider.GetRequiredService<TasksContext>().Database.Migrate();
-            }
+            using var scope = app.ApplicationServices.GetService<IServiceScopeFactory>()?.CreateScope();
+            scope.ServiceProvider.GetRequiredService<TasksContext>().Database.Migrate();
         }
     }
 }

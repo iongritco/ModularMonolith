@@ -1,5 +1,6 @@
 ﻿
 using ToDoApp.Common.Generics;
+using ToDoApp.Modules.Users.Domain.Entities;
 
 namespace ToDoApp.Modules.Users.Application.Interfaces
 {
@@ -10,5 +11,7 @@ namespace ToDoApp.Modules.Users.Application.Interfaces
         Task<Result> RegisterUser(string email, string password);
 
         Task UpdateNumberOfTasks(string email);
+
+        Task<Result<User>> GetUserByEmail(string email);
     }
 }

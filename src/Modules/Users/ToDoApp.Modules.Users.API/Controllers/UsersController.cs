@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ToDoApp.Modules.Users.Application.Commands.RegisterUser;
 using ToDoApp.Modules.Users.Application.Queries.GetToken;
+using ToDoApp.Modules.Users.Application.Queries.GetUserByEmail;
 
 namespace ToDoApp.Modules.Users.API.Controllers
 {

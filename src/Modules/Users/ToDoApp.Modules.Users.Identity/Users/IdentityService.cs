@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using ToDoApp.Common.Generics;
 using ToDoApp.Modules.Users.Application.Interfaces;
+using ToDoApp.Modules.Users.Domain.Entities;
 
-namespace ToDoApp.Modules.Users.Identity.User
+namespace ToDoApp.Modules.Users.Identity.Users
 {
     public class IdentityService : IIdentityService
     {
@@ -37,6 +38,15 @@ namespace ToDoApp.Modules.Users.Identity.User
             user.NumberOfCompletedTasks += 1;
 
             await _userManager.UpdateAsync(user);
+        }
+
+        public async Task<Result<User>> GetUserByEmail(string email)
+        {
+            var applicationUser = await _userManager.FindByEmailAsync(email);
+
+            return applicationUser != null
+                ? Result.Ok(new User(applicationUser.Email, applicationUser.UserName, applicationUser.PhoneNumber))
+                : Result.Fail<User>($"Unable to get user by email {email}");
         }
     }
 }

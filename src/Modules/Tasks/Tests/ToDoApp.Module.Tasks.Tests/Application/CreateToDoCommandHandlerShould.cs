@@ -3,6 +3,8 @@ using FluentAssertions;
 using MediatR;
 using Moq;
 using ToDoApp.Common.Tests;
+using ToDoApp.Modules.Tasks.Application.Clients;
+using ToDoApp.Modules.Tasks.Application.Clients.DTO;
 using ToDoApp.Modules.Tasks.Application.Commands.CreateTask;
 using ToDoApp.Modules.Tasks.Application.Interfaces;
 using ToDoApp.Modules.Tasks.Domain.Entities;
@@ -17,8 +19,11 @@ namespace ToDoApp.Module.Tasks.Tests.Application
         public async Task ReturnUnitValueWhenSuccessful(
             CreateTaskCommand command,
             [Frozen] Mock<ITasksCommandRepository> todoCommandRepositoryMock,
+            [Frozen] Mock<IUsersApiClient> userApiClientMock,
             CreateToDoCommandHandler sut)
         {
+            userApiClientMock.Setup(call => call.GetUser(It.IsAny<string>())).ReturnsAsync(new UserDto());
+
             var result = await sut.Handle(command, CancellationToken.None);
 
             todoCommandRepositoryMock.Verify(call => call.CreateToDo(

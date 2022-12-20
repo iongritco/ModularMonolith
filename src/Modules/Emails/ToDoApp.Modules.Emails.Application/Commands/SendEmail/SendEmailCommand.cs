@@ -1,15 +1,16 @@
 ﻿using MediatR;
 
-namespace ToDoApp.Modules.Emails.Application.Commands.SendEmail;
-
-public class SendEmailCommand : IRequest
+namespace ToDoApp.Modules.Emails.Application.Commands.SendEmail
 {
-    public SendEmailCommand(string email, string description)
+    public class SendEmailCommand : IRequest
     {
-        Email = email;
-        Description = description;
-    }
+        public SendEmailCommand(string email, string description)
+        {
+            Email = email;
+            Description = description;
+        }
 
-    public string Email { get; }
-    public string Description { get; }
+        public string Email { get; }
+        public string Description { get; }
+    }
 }

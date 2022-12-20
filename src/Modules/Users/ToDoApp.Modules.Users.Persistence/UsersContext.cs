@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using ToDoApp.Modules.Users.Identity.User;
+using ToDoApp.Modules.Users.Identity.Users;
 
 namespace ToDoApp.Modules.Users.Persistence
 {
