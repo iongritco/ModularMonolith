@@ -3,6 +3,7 @@ using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using ToDoApp.Common;
 using ToDoApp.EventBus.MassTransit;
 using ToDoApp.Modules.Emails.API;
 using ToDoApp.Modules.Emails.Application.Commands.SendEmail;
@@ -11,6 +12,7 @@ using ToDoApp.Modules.Tasks.Application.Queries;
 using ToDoApp.Modules.Users.API;
 using ToDoApp.Modules.Users.Application.Queries.GetToken;
 using ToDoApp.Server.API.Pipelines;
+using ToDoApp.SyncBus;
 
 namespace ToDoApp.Server.API
 {
@@ -24,7 +26,11 @@ namespace ToDoApp.Server.API
             builder.Services.AddTasksModule(builder.Configuration);
             builder.Services.AddUsersModule(builder.Configuration);
             builder.Services.AddEmailsModule(builder.Configuration);
-            
+
+            builder.Services.AddCommonServices();
+            builder.Services.AddSyncBus();
+            builder.Services.AddMassTransit(typeof(TasksModule).GetTypeInfo().Assembly, typeof(UsersModule).GetTypeInfo().Assembly, typeof(EmailsModule).GetTypeInfo().Assembly);
+
             builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationHandler<,>));
             builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPerformanceHandler<,>));
 
@@ -33,8 +39,6 @@ namespace ToDoApp.Server.API
             var emailModuleAssembly = typeof(SendEmailCommand).GetTypeInfo().Assembly;
             builder.Services.AddMediatR(tasksModuleAssembly, usersModuleAssembly, emailModuleAssembly);
             builder.Services.AddValidatorsFromAssemblies(new[] { tasksModuleAssembly, usersModuleAssembly, emailModuleAssembly });
-
-            builder.Services.AddMassTransit(typeof(TasksModule).GetTypeInfo().Assembly, typeof(UsersModule).GetTypeInfo().Assembly, typeof(EmailsModule).GetTypeInfo().Assembly);
 
             builder.Services.AddAuthentication(
                     options =>

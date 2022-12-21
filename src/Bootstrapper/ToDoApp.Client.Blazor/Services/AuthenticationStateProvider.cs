@@ -1,4 +1,6 @@
-﻿namespace ToDoApp.Client.Blazor.Services
+﻿using System.Net;
+
+namespace ToDoApp.Client.Blazor.Services
 {
     using System.Net.Http;
     using System.Net.Http.Headers;
@@ -30,8 +32,15 @@
             }
 
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", savedToken);
-            var username = await _httpClient.GetStringAsync("api/users/me/name");
-            var identity = !string.IsNullOrEmpty(username) ? new ClaimsIdentity(new[] { new Claim(ClaimTypes.Name, username) }, "apiauth") : new ClaimsIdentity();
+            var result = await _httpClient.GetAsync("api/users/me/name");
+
+            if (result.StatusCode != HttpStatusCode.OK)
+            {
+                return new AuthenticationState(new ClaimsPrincipal(new ClaimsIdentity()));
+            }
+
+            var user = await result.Content.ReadAsStringAsync();
+            var identity = !string.IsNullOrEmpty(user) ? new ClaimsIdentity(new[] { new Claim(ClaimTypes.Name, user) }, "apiauth") : new ClaimsIdentity();
 
             return new AuthenticationState(new ClaimsPrincipal(identity));
         }

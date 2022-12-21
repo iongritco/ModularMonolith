@@ -73,6 +73,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp.Modules.Tasks.Infra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp.Modules.Users.Domain", "src\Modules\Users\ToDoApp.Modules.Users.Domain\ToDoApp.Modules.Users.Domain.csproj", "{E85C14BF-0284-4398-92D0-D4F6B0DEDB32}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp.SyncBus", "src\Shared\ToDoApp.SyncBus\ToDoApp.SyncBus.csproj", "{6B7F478A-9AD9-4238-920C-D53586415E0D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -175,6 +177,10 @@ Global
 		{E85C14BF-0284-4398-92D0-D4F6B0DEDB32}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E85C14BF-0284-4398-92D0-D4F6B0DEDB32}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E85C14BF-0284-4398-92D0-D4F6B0DEDB32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B7F478A-9AD9-4238-920C-D53586415E0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B7F478A-9AD9-4238-920C-D53586415E0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B7F478A-9AD9-4238-920C-D53586415E0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B7F478A-9AD9-4238-920C-D53586415E0D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -213,6 +219,7 @@ Global
 		{E8631DE3-109F-4C67-B754-906539DF9CB5} = {1A1839D5-7E84-43CA-91E1-F0DDAF0288D7}
 		{61A36362-73BC-4A25-B10B-69D4B2352391} = {30FC2DB9-4745-4E73-890A-3BE8BCD27401}
 		{E85C14BF-0284-4398-92D0-D4F6B0DEDB32} = {786E2C95-D686-48E0-A88F-872DBB558D98}
+		{6B7F478A-9AD9-4238-920C-D53586415E0D} = {1A1839D5-7E84-43CA-91E1-F0DDAF0288D7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {81D53214-F5EC-42B4-AEC0-9FD0F52391DB}

@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Shared\ToDoApp.SyncBus\ToDoApp.SyncBus.csproj" />
     <ProjectReference Include="..\ToDoApp.Modules.Tasks.Application\ToDoApp.Modules.Tasks.Application.csproj" />
   </ItemGroup>
 

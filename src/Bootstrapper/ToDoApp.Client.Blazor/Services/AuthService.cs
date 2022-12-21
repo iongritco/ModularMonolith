@@ -10,8 +10,6 @@ using System.Net.Http.Json;
 
 namespace ToDoApp.Client.Blazor.Services
 {
-
-
     public class AuthService : IAuthService
     {
         private readonly HttpClient _httpClient;
