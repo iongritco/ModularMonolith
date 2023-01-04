@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ToDoApp.Modules.Users.Application.Commands.RegisterUser;
 using ToDoApp.Modules.Users.Application.Queries.GetToken;
-using ToDoApp.Modules.Users.Application.Queries.GetUserByEmail;
 
 namespace ToDoApp.Modules.Users.API.Controllers
 {
@@ -42,7 +41,7 @@ namespace ToDoApp.Modules.Users.API.Controllers
 
             if (!result.IsSuccessful)
             {
-                Ok(result.ErrorMessage);
+                BadRequest(result.ErrorMessage);
             }
 
             return Ok();
