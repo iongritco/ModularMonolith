@@ -5,7 +5,8 @@ using static ToDoApp.Tests.EndToEnd.BaseTestsClass;
 namespace ToDoApp.Tests.EndToEnd.Tests
 {
     // Login and register are covered as part of setup
-    public class UsersApiShould : IClassFixture<BaseTestsClass>
+    [Collection("Tests collection")]
+    public class UsersApiShould
     {
         [Fact]
         public async Task ReturnCurrentUserName()

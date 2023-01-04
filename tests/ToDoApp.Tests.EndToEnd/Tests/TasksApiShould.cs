@@ -9,7 +9,8 @@ using static ToDoApp.Tests.EndToEnd.BaseTestsClass;
 
 namespace ToDoApp.Tests.EndToEnd.Tests
 {
-    public class TasksApiShould : IClassFixture<BaseTestsClass>
+    [Collection("Tests collection")]
+    public class TasksApiShould
     {
         [Fact]
         public async Task ReturnAddedTasks()

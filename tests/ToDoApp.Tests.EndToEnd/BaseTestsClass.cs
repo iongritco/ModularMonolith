@@ -12,16 +12,15 @@ namespace ToDoApp.Tests.EndToEnd
     {
         public static string Username = "test@test.com";
         public static HttpClient CustomHttpClient;
-        private readonly CustomWebApplicationFactory _applicationFactory;
         private readonly string _dbConnection;
         private Respawner _respawner;
 
         public BaseTestsClass()
         {
-            _applicationFactory = new CustomWebApplicationFactory();
-            var configuration = _applicationFactory.Services.GetRequiredService<IConfiguration>();
+            var applicationFactory = new CustomWebApplicationFactory();
+            var configuration = applicationFactory.Services.GetRequiredService<IConfiguration>();
             _dbConnection = configuration.GetConnectionString("ToDoConnection");
-            CustomHttpClient = _applicationFactory.CreateClient();
+            CustomHttpClient = applicationFactory.CreateClient();
         }
 
         public async Task InitializeAsync()
