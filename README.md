@@ -3,4 +3,6 @@
 # ModularMonolith
 A playground for experimenting projects with a Modular Monolith Architecture - DDD, CQRS, MediatR, .NET 7, Entity Framework Core
 
-To get started, just create the database ToDo and ToDo_Tests and update the connection string in appsettings - the migration will be executed automatically on the first run.
+## Setup
+- To get started, just create the database ToDo and ToDo_Tests and update the connection string in appsettings (both in ToDoApp.Server.API and in ToDoApp.Tests.EndToEnd for integration tests) - the migration will be executed automatically on the first run. 
+- Set as startup projects the ToDoApp.Client.Blazor and ToDoApp.Server.API projects.
