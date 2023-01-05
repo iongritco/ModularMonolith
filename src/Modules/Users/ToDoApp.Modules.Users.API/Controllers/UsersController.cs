@@ -41,7 +41,7 @@ namespace ToDoApp.Modules.Users.API.Controllers
 
             if (!result.IsSuccessful)
             {
-                BadRequest(result.ErrorMessage);
+                return BadRequest(result.ErrorMessage);
             }
 
             return Ok();
