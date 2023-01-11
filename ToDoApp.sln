@@ -17,8 +17,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tasks", "Tasks", "{30FC2DB9
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Users", "Users", "{786E2C95-D686-48E0-A88F-872DBB558D98}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoApp.Tests.EndToEnd", "tests\ToDoApp.Tests.EndToEnd\ToDoApp.Tests.EndToEnd.csproj", "{F955A2FD-7E5B-4739-B134-103EF62509B6}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoApp.Server.API", "src\Bootstrapper\ToDoApp.Server.API\ToDoApp.Server.API.csproj", "{1CFF4FCC-643A-4918-B1E1-980603B2B56D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoApp.Client.Blazor", "src\Bootstrapper\ToDoApp.Client.Blazor\ToDoApp.Client.Blazor.csproj", "{CD52B11A-90BF-4D95-A158-208D1CDC049D}"
@@ -69,11 +67,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoApp.Modules.Emails.Infr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoApp.Common.Tests", "src\Shared\ToDoApp.Common.Tests\ToDoApp.Common.Tests.csproj", "{E8631DE3-109F-4C67-B754-906539DF9CB5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp.Modules.Tasks.Infrastructure", "src\Modules\Tasks\ToDoApp.Modules.Tasks.Infrastructure\ToDoApp.Modules.Tasks.Infrastructure.csproj", "{61A36362-73BC-4A25-B10B-69D4B2352391}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoApp.Modules.Tasks.Infrastructure", "src\Modules\Tasks\ToDoApp.Modules.Tasks.Infrastructure\ToDoApp.Modules.Tasks.Infrastructure.csproj", "{61A36362-73BC-4A25-B10B-69D4B2352391}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp.Modules.Users.Domain", "src\Modules\Users\ToDoApp.Modules.Users.Domain\ToDoApp.Modules.Users.Domain.csproj", "{E85C14BF-0284-4398-92D0-D4F6B0DEDB32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoApp.Modules.Users.Domain", "src\Modules\Users\ToDoApp.Modules.Users.Domain\ToDoApp.Modules.Users.Domain.csproj", "{E85C14BF-0284-4398-92D0-D4F6B0DEDB32}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp.SyncBus", "src\Shared\ToDoApp.SyncBus\ToDoApp.SyncBus.csproj", "{6B7F478A-9AD9-4238-920C-D53586415E0D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoApp.SyncBus", "src\Shared\ToDoApp.SyncBus\ToDoApp.SyncBus.csproj", "{6B7F478A-9AD9-4238-920C-D53586415E0D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoApp.EndToEnd.Tests", "tests\ToDoApp.EndToEnd.Tests\ToDoApp.EndToEnd.Tests.csproj", "{4444EB21-6E4B-4A99-A80C-3D50600637DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,10 +81,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F955A2FD-7E5B-4739-B134-103EF62509B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F955A2FD-7E5B-4739-B134-103EF62509B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F955A2FD-7E5B-4739-B134-103EF62509B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F955A2FD-7E5B-4739-B134-103EF62509B6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1CFF4FCC-643A-4918-B1E1-980603B2B56D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1CFF4FCC-643A-4918-B1E1-980603B2B56D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CFF4FCC-643A-4918-B1E1-980603B2B56D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -181,6 +177,10 @@ Global
 		{6B7F478A-9AD9-4238-920C-D53586415E0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B7F478A-9AD9-4238-920C-D53586415E0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B7F478A-9AD9-4238-920C-D53586415E0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4444EB21-6E4B-4A99-A80C-3D50600637DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4444EB21-6E4B-4A99-A80C-3D50600637DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4444EB21-6E4B-4A99-A80C-3D50600637DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4444EB21-6E4B-4A99-A80C-3D50600637DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -191,7 +191,6 @@ Global
 		{1A1839D5-7E84-43CA-91E1-F0DDAF0288D7} = {693C6B8C-80AC-42FF-9DCD-1F70DD85679B}
 		{30FC2DB9-4745-4E73-890A-3BE8BCD27401} = {3FEDF684-0465-4C63-829B-FE589EDC012F}
 		{786E2C95-D686-48E0-A88F-872DBB558D98} = {3FEDF684-0465-4C63-829B-FE589EDC012F}
-		{F955A2FD-7E5B-4739-B134-103EF62509B6} = {8FEE8AA7-6F2B-4900-B07E-80C4F33EB0E8}
 		{1CFF4FCC-643A-4918-B1E1-980603B2B56D} = {D3CA4608-10AF-4796-AA29-66EDC15840E6}
 		{CD52B11A-90BF-4D95-A158-208D1CDC049D} = {D3CA4608-10AF-4796-AA29-66EDC15840E6}
 		{321B621F-1257-490A-9BBB-9361491F7826} = {30FC2DB9-4745-4E73-890A-3BE8BCD27401}
@@ -220,6 +219,7 @@ Global
 		{61A36362-73BC-4A25-B10B-69D4B2352391} = {30FC2DB9-4745-4E73-890A-3BE8BCD27401}
 		{E85C14BF-0284-4398-92D0-D4F6B0DEDB32} = {786E2C95-D686-48E0-A88F-872DBB558D98}
 		{6B7F478A-9AD9-4238-920C-D53586415E0D} = {1A1839D5-7E84-43CA-91E1-F0DDAF0288D7}
+		{4444EB21-6E4B-4A99-A80C-3D50600637DC} = {8FEE8AA7-6F2B-4900-B07E-80C4F33EB0E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {81D53214-F5EC-42B4-AEC0-9FD0F52391DB}
