@@ -11,4 +11,10 @@
 		<PackageReference Include="NBomber" Version="3.3.0" />
 		<PackageReference Include="NBomber.Http" Version="3.0.3" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="appsettings.json">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
 </Project>
