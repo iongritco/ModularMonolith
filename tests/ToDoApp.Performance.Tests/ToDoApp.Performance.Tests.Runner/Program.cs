@@ -10,7 +10,7 @@ namespace ToDoApp.Performance.Tests.Runner
 {
     public class Program
     {
-        private const string Token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6Imlvbi5ncml0Y29Ac29mdHZpc2lvbi5jb20iLCJuYmYiOjE2NzMzNDg3ODksImV4cCI6MTY3MzQzNTE4OSwiaWF0IjoxNjczMzQ4Nzg5fQ.GYQjo2VB85POG3Nf9jVJDSU3MaXCpiOJIILfwzbR2dQ";
+        private const string Token = "AddYourTokenHere";
         private const string BaseUrl = "https://localhost:5002";
 
         static void Main()
