@@ -1,16 +1,11 @@
 ﻿using System.Net;
+using System.Net.Http.Headers;
+using System.Security.Claims;
+using Blazored.LocalStorage;
+using Microsoft.AspNetCore.Components.Authorization;
 
 namespace ToDoApp.Client.Blazor.Services
 {
-    using System.Net.Http;
-    using System.Net.Http.Headers;
-    using System.Security.Claims;
-    using System.Threading.Tasks;
-
-    using Blazored.LocalStorage;
-
-    using Microsoft.AspNetCore.Components.Authorization;
-
     public class CustomAuthenticationStateProvider : AuthenticationStateProvider
     {
         private readonly HttpClient _httpClient;
@@ -22,6 +17,7 @@ namespace ToDoApp.Client.Blazor.Services
             _httpClient = httpClient;
             _localStorage = localStorage;
         }
+
         public override async Task<AuthenticationState> GetAuthenticationStateAsync()
         {
             var savedToken = await _localStorage.GetItemAsync<string>("authToken");

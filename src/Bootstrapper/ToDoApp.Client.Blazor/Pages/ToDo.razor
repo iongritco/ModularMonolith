@@ -1,14 +1,10 @@
 ﻿@page "/todo"
-@inject HttpClient Http
-@using Microsoft.AspNetCore.Components.Authorization
-@inject NavigationManager NavigationManager
-@inject AuthenticationStateProvider AuthenticationStateProvider
 
 <h1>To Do</h1>
 
 <p>To Do list.</p>
 
-@if (toDoList == null)
+@if (_toDoList == null)
 {
     <p><em>Loading...</em></p>
 }
@@ -26,9 +22,9 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var toDo in toDoList)
+            @foreach (var toDo in _toDoList)
             {
-                <tr class="@(@toDo.Status==Status.Completed?"table-success":@toDo.Status==Status.InProgress?"table-warning":"table-primary")">
+                <tr class="@(toDo.Status==Status.Completed?"table-success":toDo.Status==Status.InProgress?"table-warning":"table-primary")">
                     <td>@toDo.CreatedDate.ToShortDateString()</td>
                     <td>@toDo.Description</td>
                     <td>@toDo.Status.ToString()</td>
@@ -41,69 +37,10 @@ else
     </table>
 }
 
-@if (toDoList != null)
+@if (_toDoList != null)
 {
     <div class="form-inline">
-        <input class="form-control col-mb-4" placeholder="Add new item" @bind="@newItem" />
+        <input class="form-control col-mb-4" placeholder="Add new item" @bind="@_newItem" />
         <button class="btn btn-primary col-mb-2" @onclick="@AddTodo">Create</button>
     </div>
-}
-
-@code {
-    List<TaskModel> toDoList;
-    private string newItem;
-    private string currentUser;
-
-    [CascadingParameter]
-    private Task<AuthenticationState> authenticationStateTask { get; set; }
-
-    protected override async Task OnInitializedAsync()
-    {
-        var authState = await authenticationStateTask;
-        var user = authState.User;
-
-        if (user.Identity.IsAuthenticated)
-        {
-            currentUser = user.Identity.Name;
-            toDoList = await Http.GetFromJsonAsync<List<TaskModel>>("api/tasks");
-        }
-        else
-        {
-            NavigationManager.NavigateTo("login/");
-        }
-    }
-
-    private async Task AddTodo()
-    {
-        if (!string.IsNullOrWhiteSpace(newItem))
-        {
-            var todo = new TaskModel(Guid.NewGuid(), newItem, currentUser, DateTime.Today, Status.ToDo);
-            toDoList.Add(todo);
-            await Http.PostAsJsonAsync("api/tasks", todo);
-            newItem = string.Empty;
-        }
-    }
-
-    private void RemoveTodo(Guid guid)
-    {
-        toDoList.Remove(toDoList.First(x => x.Id.Equals(guid)));
-        Http.DeleteAsync($"api/tasks/{guid}");
-    }
-
-    private async Task StartTodo(Guid guid)
-    {
-        await UpdateTodo(guid, Status.InProgress);
-    }
-
-    private async Task CompleteTodo(Guid guid)
-    {
-        await UpdateTodo(guid, Status.Completed);
-    }
-
-    private async Task UpdateTodo(Guid guid, Status status)
-    {
-        var todo = toDoList.First(x => x.Id.Equals(guid));
-        todo.Status = status;
-        await Http.PutAsJsonAsync("api/tasks", todo);
-    }
 }

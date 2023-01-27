@@ -1,12 +1,8 @@
 ﻿using System.Net.Http.Headers;
-
-using Blazored.LocalStorage;
-
-using Microsoft.AspNetCore.Components.Authorization;
-
-using ToDoApp.Client.Blazor.ViewModels;
-
 using System.Net.Http.Json;
+using Blazored.LocalStorage;
+using Microsoft.AspNetCore.Components.Authorization;
+using ToDoApp.Client.Blazor.ViewModels;
 
 namespace ToDoApp.Client.Blazor.Services
 {
@@ -32,7 +28,6 @@ namespace ToDoApp.Client.Blazor.Services
             return result;
         }
 
-        // PostJsonAsync throws an error when reading string result - this is why I switched to PostAsync
         public async Task<string> Login(LoginModel loginModel)
         {
             var tokenTask = await _httpClient.PostAsJsonAsync("api/users/login", new { Username = loginModel.Email, Password = loginModel.Password });
