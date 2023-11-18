@@ -24,12 +24,11 @@ namespace ToDoApp.Module.Tasks.Tests.Application
         {
             userApiClientMock.Setup(call => call.GetUser(It.IsAny<string>())).ReturnsAsync(new UserDto());
 
-            var result = await sut.Handle(command, CancellationToken.None);
+            await sut.Handle(command, CancellationToken.None);
 
             todoCommandRepositoryMock.Verify(call => call.CreateToDo(
                 It.Is<ToDoItem>(x => x.Id.Equals(command.Id) && x.Description.Equals(command.Description) && x.Username.Equals(command.Username))),
                 Times.Once);
-            result.Should().Be(Unit.Value);
         }
     }
 }

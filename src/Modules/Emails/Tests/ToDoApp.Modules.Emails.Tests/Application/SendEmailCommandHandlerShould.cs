@@ -19,12 +19,11 @@ namespace ToDoApp.Modules.Emails.Tests.Application
             [Frozen] Mock<IEmailService> todoCommandRepositoryMock,
             SendEmailCommandHandler sut)
         {
-            var result = await sut.Handle(command, CancellationToken.None);
+            await sut.Handle(command, CancellationToken.None);
 
             todoCommandRepositoryMock.Verify(call => call.SendEmail(
                 It.Is<Email>(x => x.To.Equals(command.Email) && x.Body.Equals(command.Description))),
                 Times.Once);
-            result.Should().Be(Unit.Value);
         }
     }
 }

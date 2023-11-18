@@ -17,7 +17,7 @@ namespace ToDoApp.Modules.Tasks.Application.Commands.CreateTask
             _usersApiClient = usersApiClient;
         }
 
-        public async Task<Unit> Handle(CreateTaskCommand request, CancellationToken cancellationToken)
+        public async Task Handle(CreateTaskCommand request, CancellationToken cancellationToken)
         {
             var user = await _usersApiClient.GetUser(request.Username);
             if (user is null)
@@ -27,8 +27,6 @@ namespace ToDoApp.Modules.Tasks.Application.Commands.CreateTask
 
             var toDo = new ToDoItem(request.Id, request.Description, request.Username);
             await _commandRepository.CreateToDo(toDo);
-
-            return Unit.Value;
         }
     }
 }

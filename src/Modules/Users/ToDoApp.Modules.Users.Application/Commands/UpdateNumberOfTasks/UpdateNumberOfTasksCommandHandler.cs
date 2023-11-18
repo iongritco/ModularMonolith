@@ -12,11 +12,9 @@ namespace ToDoApp.Modules.Users.Application.Commands.UpdateNumberOfTasks
             _identityService = identityService;
         }
 
-        public async Task<Unit> Handle(UpdateNumberOfTasksCommand request, CancellationToken cancellationToken)
+        public async Task Handle(UpdateNumberOfTasksCommand request, CancellationToken cancellationToken)
         {
             await _identityService.UpdateNumberOfTasks(request.Email);
-
-            return Unit.Value;
         }
     }
 }

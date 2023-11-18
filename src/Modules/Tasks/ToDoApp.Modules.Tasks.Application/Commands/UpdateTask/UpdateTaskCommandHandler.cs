@@ -22,7 +22,7 @@ namespace ToDoApp.Modules.Tasks.Application.Commands.UpdateTask
             _eventBus = eventBus;
         }
 
-        public async Task<Unit> Handle(UpdateTaskCommand request, CancellationToken cancellationToken)
+        public async Task Handle(UpdateTaskCommand request, CancellationToken cancellationToken)
         {
             var toDo = await _queryRepository.GetToDo(request.Id, request.Username);
             toDo.SetDescription(request.Description);
@@ -34,8 +34,6 @@ namespace ToDoApp.Modules.Tasks.Application.Commands.UpdateTask
             {
                 await _eventBus.Publish(new TaskCompletedEvent(toDo.Description, toDo.Username));
             }
-
-            return Unit.Value;
         }
     }
 }

@@ -37,7 +37,7 @@ namespace ToDoApp.Server.API
             var tasksModuleAssembly = typeof(GetTasksQuery).GetTypeInfo().Assembly;
             var usersModuleAssembly = typeof(GetTokenQuery).GetTypeInfo().Assembly;
             var emailModuleAssembly = typeof(SendEmailCommand).GetTypeInfo().Assembly;
-            builder.Services.AddMediatR(tasksModuleAssembly, usersModuleAssembly, emailModuleAssembly);
+            builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(tasksModuleAssembly, usersModuleAssembly, emailModuleAssembly));
             builder.Services.AddValidatorsFromAssemblies(new[] { tasksModuleAssembly, usersModuleAssembly, emailModuleAssembly });
 
             builder.Services.AddAuthentication(

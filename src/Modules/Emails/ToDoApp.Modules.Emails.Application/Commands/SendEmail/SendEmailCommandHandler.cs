@@ -12,10 +12,9 @@ namespace ToDoApp.Modules.Emails.Application.Commands.SendEmail
             _emailService = emailService;
         }
 
-        public async Task<Unit> Handle(SendEmailCommand request, CancellationToken cancellationToken)
+        public async Task Handle(SendEmailCommand request, CancellationToken cancellationToken)
         {
             await _emailService.SendEmail(new Domain.Entities.Email(request.Email, request.Description));
-            return Unit.Value;
         }
     }
 }

@@ -29,9 +29,8 @@ namespace ToDoApp.Module.Tasks.Tests.Application
             queryRepositoryMock.Setup(call => call.GetToDo(It.IsAny<Guid>(), It.IsAny<string>()))
                 .ReturnsAsync(toDoItem);
 
-            var result = await sut.Handle(command, CancellationToken.None);
+            await sut.Handle(command, CancellationToken.None);
 
-            result.Should().Be(Unit.Value);
             commandRepositoryMock.Verify(
                 call => call.UpdateToDo(It.Is<ToDoItem>(x =>
                     x.Status == command.Status && x.Description == command.Description)),
