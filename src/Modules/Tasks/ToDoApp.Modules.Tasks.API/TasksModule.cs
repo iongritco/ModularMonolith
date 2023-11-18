@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using ToDoApp.Modules.Tasks.Application.Interfaces;
 using ToDoApp.Modules.Tasks.Persistence.ToDo;
 using Microsoft.EntityFrameworkCore;
@@ -7,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using ToDoApp.Modules.Tasks.Application.Clients;
 using ToDoApp.Modules.Tasks.Infrastructure;
 using ToDoApp.Modules.Tasks.Persistence;
+using Microsoft.AspNetCore.Builder;
 
 namespace ToDoApp.Modules.Tasks.API
 {
