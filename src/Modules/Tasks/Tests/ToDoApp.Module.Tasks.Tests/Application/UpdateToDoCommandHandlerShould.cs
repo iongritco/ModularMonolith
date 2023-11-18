@@ -1,7 +1,7 @@
 ﻿using AutoFixture.Xunit2;
-using FluentAssertions;
-using MediatR;
+
 using Moq;
+
 using ToDoApp.Common.Tests;
 using ToDoApp.EventBus.Events;
 using ToDoApp.EventBus.Interfaces;
@@ -9,6 +9,7 @@ using ToDoApp.Modules.Tasks.Application.Commands.UpdateTask;
 using ToDoApp.Modules.Tasks.Application.Interfaces;
 using ToDoApp.Modules.Tasks.Domain.Entities;
 using ToDoApp.Modules.Tasks.Domain.Enums;
+
 using Xunit;
 
 namespace ToDoApp.Module.Tasks.Tests.Application

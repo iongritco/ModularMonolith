@@ -1,11 +1,12 @@
 ﻿using AutoFixture.Xunit2;
-using FluentAssertions;
-using MediatR;
+
 using Moq;
+
 using ToDoApp.Common.Tests;
 using ToDoApp.Modules.Emails.Application.Commands.SendEmail;
 using ToDoApp.Modules.Emails.Application.Interfaces;
 using ToDoApp.Modules.Emails.Domain.Entities;
+
 using Xunit;
 
 namespace ToDoApp.Modules.Emails.Tests.Application

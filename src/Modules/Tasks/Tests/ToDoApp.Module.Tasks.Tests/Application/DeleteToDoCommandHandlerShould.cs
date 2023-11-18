@@ -1,12 +1,13 @@
 ﻿using AutoFixture.Xunit2;
-using FluentAssertions;
-using MediatR;
+
 using Moq;
+
 using ToDoApp.Common.Tests;
 using ToDoApp.Modules.Tasks.Application.Commands.DeleteTask;
 using ToDoApp.Modules.Tasks.Application.Interfaces;
 using ToDoApp.Modules.Tasks.Domain.Entities;
 using ToDoApp.Modules.Tasks.Domain.Enums;
+
 using Xunit;
 
 namespace ToDoApp.Module.Tasks.Tests.Application
