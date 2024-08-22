@@ -109,12 +109,10 @@ public class ArchitectureTests : ArchitectureSetup
 		Assembly[] assemblies = [TasksDomainAssembly, TasksApplicationAssembly, TasksInfrastructureAssembly, TasksPersistenceAssembly, TasksPresentationAssembly];
 
 		// Act
-		var result = Types.InAssemblies(assemblies)
+		var isSuccessful = Types.InAssemblies(assemblies)
 			.Should()
 			.NotHaveDependencyOnAny(dependencies)
-			.GetResult();
-			
-		var isSuccessful=result.IsSuccessful;
+			.GetResult().IsSuccessful;
 
 		// Assert
 		isSuccessful.Should().BeTrue("Tasks module should not have any direct dependencies to other modules");
