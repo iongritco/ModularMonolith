@@ -75,6 +75,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoApp.SyncBus", "src\Shar
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoApp.EndToEnd.Tests", "tests\ToDoApp.EndToEnd.Tests\ToDoApp.EndToEnd.Tests.csproj", "{4444EB21-6E4B-4A99-A80C-3D50600637DC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp.Architecture.Tests", "tests\ToDoApp.Architecture.Tests\ToDoApp.Architecture.Tests.csproj", "{7B30B3A3-DF43-4E4E-9E3F-3BBA5327F0AA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -181,6 +183,10 @@ Global
 		{4444EB21-6E4B-4A99-A80C-3D50600637DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4444EB21-6E4B-4A99-A80C-3D50600637DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4444EB21-6E4B-4A99-A80C-3D50600637DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B30B3A3-DF43-4E4E-9E3F-3BBA5327F0AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B30B3A3-DF43-4E4E-9E3F-3BBA5327F0AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B30B3A3-DF43-4E4E-9E3F-3BBA5327F0AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B30B3A3-DF43-4E4E-9E3F-3BBA5327F0AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -220,6 +226,7 @@ Global
 		{E85C14BF-0284-4398-92D0-D4F6B0DEDB32} = {786E2C95-D686-48E0-A88F-872DBB558D98}
 		{6B7F478A-9AD9-4238-920C-D53586415E0D} = {1A1839D5-7E84-43CA-91E1-F0DDAF0288D7}
 		{4444EB21-6E4B-4A99-A80C-3D50600637DC} = {8FEE8AA7-6F2B-4900-B07E-80C4F33EB0E8}
+		{7B30B3A3-DF43-4E4E-9E3F-3BBA5327F0AA} = {8FEE8AA7-6F2B-4900-B07E-80C4F33EB0E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {81D53214-F5EC-42B4-AEC0-9FD0F52391DB}
