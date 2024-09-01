@@ -16,7 +16,8 @@ namespace ToDoApp.Modules.Tasks.API
         {
             services.AddScoped<ITasksQueryRepository, TasksQueryRepository>();
             services.AddScoped<ITasksCommandRepository, TasksCommandRepository>();
-            services.AddScoped<IUsersApiClient, UsersApiClient>();
+            // if you want to use sync bus implementation, add UsersApiClientViaSyncBus instead of UsersApiClientViaContracts
+            services.AddScoped<IUsersApiClient, UsersApiClientViaContracts>();
             services.AddDbContext<TasksContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("ToDoConnection")));
 

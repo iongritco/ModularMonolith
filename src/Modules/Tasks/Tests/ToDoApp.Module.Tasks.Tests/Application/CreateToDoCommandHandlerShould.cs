@@ -4,7 +4,7 @@ using Moq;
 
 using ToDoApp.Common.Tests;
 using ToDoApp.Modules.Tasks.Application.Clients;
-using ToDoApp.Modules.Tasks.Application.Clients.DTO;
+using ToDoApp.Modules.Tasks.Application.Clients.DTOs;
 using ToDoApp.Modules.Tasks.Application.Commands.CreateTask;
 using ToDoApp.Modules.Tasks.Application.Interfaces;
 using ToDoApp.Modules.Tasks.Domain.Entities;
@@ -23,7 +23,7 @@ namespace ToDoApp.Module.Tasks.Tests.Application
             [Frozen] Mock<IUsersApiClient> userApiClientMock,
             CreateToDoCommandHandler sut)
         {
-            userApiClientMock.Setup(call => call.GetUser(It.IsAny<string>())).ReturnsAsync(new UserDto());
+            userApiClientMock.Setup(call => call.GetUser(It.IsAny<string>())).ReturnsAsync(new UserDto("email", "name"));
 
             await sut.Handle(command, CancellationToken.None);
 

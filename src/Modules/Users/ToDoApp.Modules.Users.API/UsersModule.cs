@@ -4,8 +4,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+
+using ToDoApp.Modules.Users.API.Services;
 using ToDoApp.Modules.Users.Application.Interfaces;
 using ToDoApp.Modules.Users.Application.Queries.GetUserByEmail;
+using ToDoApp.Modules.Users.Contracts;
 using ToDoApp.Modules.Users.Domain.Entities;
 using ToDoApp.Modules.Users.Identity.JwtToken;
 using ToDoApp.Modules.Users.Identity.Users;
@@ -21,6 +24,7 @@ namespace ToDoApp.Modules.Users.API
             services.AddSingleton<ISettings, Settings>();
             services.AddTransient<IIdentityService, IdentityService>();
             services.AddTransient<ITokenService, JwtTokenService>();
+            services.AddTransient<IUsersModuleService, UsersModuleService>();
             services.AddIdentity<ApplicationUser, IdentityRole<Guid>>()
                 .AddEntityFrameworkStores<UsersContext>()
                 .AddDefaultTokenProviders();

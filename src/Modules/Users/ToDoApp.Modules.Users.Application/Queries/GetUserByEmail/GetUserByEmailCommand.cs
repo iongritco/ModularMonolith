@@ -5,6 +5,11 @@ namespace ToDoApp.Modules.Users.Application.Queries.GetUserByEmail
 {
     public class GetUserByEmailCommand : IRequest<User>
     {
-        public string Email { get; set; }
+        public GetUserByEmailCommand(string email)
+        {
+            Email = email;
+        }
+
+        public string Email { get; }
     }
 }

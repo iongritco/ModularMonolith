@@ -11,7 +11,7 @@ public class ArchitectureTests : ArchitectureSetup
 		// Assert
 		string[] dependencies =
 		[
-			UsersApplicationAssemblyName, UsersIdentityAssemblyName, UsersPersistenceAssemblyName, UsersPresentationAssemblyName,
+			UsersApplicationAssemblyName, UsersIdentityAssemblyName, UsersPersistenceAssemblyName, UsersPresentationAssemblyName, UsersContractsAssemblyName,
 			TasksApplicationAssemblyName, TasksInfrastructureAssemblyName, TasksPersistenceAssemblyName, TasksPresentationAssemblyName,
 			EmailsApplicationAssemblyName, EmailsInfrastructureAssemblyName, EmailsPresentationAssemblyName
 		];
@@ -28,14 +28,37 @@ public class ArchitectureTests : ArchitectureSetup
 		isSuccessful.Should().BeTrue("Domain layers should not have any dependency on other projects");
 	}
 
-	[Fact]
+    [Fact]
+    public void ContractsLayer_ShouldNotDependOn_AnyOtherLayer()
+    {
+        // Assert
+		string[] dependencies =
+		[
+			UsersApplicationAssemblyName, UsersIdentityAssemblyName, UsersPersistenceAssemblyName, UsersPresentationAssemblyName, UsersDomainAssemblyName,
+			TasksApplicationAssemblyName, TasksInfrastructureAssemblyName, TasksPersistenceAssemblyName, TasksPresentationAssemblyName, TasksDomainAssemblyName,
+			EmailsApplicationAssemblyName, EmailsInfrastructureAssemblyName, EmailsPresentationAssemblyName, EmailsDomainAssemblyName
+		];
+
+        Assembly[] assemblies = [UsersContractsAssembly];
+
+        // Act
+        var isSuccessful = Types.InAssemblies(assemblies)
+            .Should()
+            .NotHaveDependencyOnAny(dependencies)
+            .GetResult().IsSuccessful;
+
+        // Assert
+        isSuccessful.Should().BeTrue("Domain layers should not have any dependency on other projects");
+    }
+
+    [Fact]
 	public void ApplicationLayer_ShouldDependOnlyOn_DomainLayer()
 	{
 		// Assert
 		string[] dependencies =
 		[
-			UsersIdentityAssemblyName, UsersPersistenceAssemblyName, UsersPresentationAssemblyName,
-			TasksInfrastructureAssemblyName, TasksPersistenceAssemblyName, TasksPresentationAssemblyName,
+			UsersIdentityAssemblyName, UsersPersistenceAssemblyName, UsersPresentationAssemblyName, UsersContractsAssemblyName,
+            TasksInfrastructureAssemblyName, TasksPersistenceAssemblyName, TasksPresentationAssemblyName,
 			EmailsInfrastructureAssemblyName, EmailsPresentationAssemblyName
 		];
 
@@ -75,7 +98,7 @@ public class ArchitectureTests : ArchitectureSetup
 	}
 
 	[Fact]
-	public void UsersModule_ShouldNotDependOn_AnyOtherModule()
+	public void UsersModule_ShouldNotDependOn_AnyOtherModuleExceptViaContracts()
 	{
 		// Assert
 		string[] dependencies =
@@ -97,7 +120,7 @@ public class ArchitectureTests : ArchitectureSetup
 	}
 
 	[Fact]
-	public void TasksModule_ShouldNotDependOn_AnyOtherModule()
+	public void TasksModule_ShouldNotDependOn_AnyOtherModuleExceptViaContracts()
 	{
 		// Assert
 		string[] dependencies =
@@ -119,7 +142,7 @@ public class ArchitectureTests : ArchitectureSetup
 	}
 
 	[Fact]
-	public void EmailsModule_ShouldNotDependOn_AnyOtherModule()
+	public void EmailsModule_ShouldNotDependOn_AnyOtherModuleExceptViaContracts()
 	{
 		// Assert
 		string[] dependencies =

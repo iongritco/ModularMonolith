@@ -1,4 +1,4 @@
-﻿using ToDoApp.Modules.Tasks.Application.Clients.DTO;
+﻿using ToDoApp.Modules.Tasks.Application.Clients.DTOs;
 
 namespace ToDoApp.Modules.Tasks.Application.Clients
 {

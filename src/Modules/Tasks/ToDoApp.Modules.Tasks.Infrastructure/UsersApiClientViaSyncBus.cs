@@ -1,14 +1,15 @@
 ﻿using ToDoApp.Modules.Tasks.Application.Clients;
-using ToDoApp.Modules.Tasks.Application.Clients.DTO;
+using ToDoApp.Modules.Tasks.Application.Clients.DTOs;
 using ToDoApp.SyncBus.Interfaces;
 
 namespace ToDoApp.Modules.Tasks.Infrastructure
 {
-    public class UsersApiClient : IUsersApiClient
+    // Dynamic implementation via "syncBusClient"
+    public class UsersApiClientViaSyncBus : IUsersApiClient
     {
         private readonly ISyncBusClient _syncBusClient;
 
-        public UsersApiClient(ISyncBusClient syncBusClient)
+        public UsersApiClientViaSyncBus(ISyncBusClient syncBusClient)
         {
             _syncBusClient = syncBusClient;
         }

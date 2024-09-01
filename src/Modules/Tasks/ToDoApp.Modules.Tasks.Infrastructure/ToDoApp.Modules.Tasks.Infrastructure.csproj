@@ -7,7 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Mapster" Version="7.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\..\Shared\ToDoApp.SyncBus\ToDoApp.SyncBus.csproj" />
+    <ProjectReference Include="..\..\Users\ToDoApp.Modules.Users.Contracts\ToDoApp.Modules.Users.Contracts.csproj" />
     <ProjectReference Include="..\ToDoApp.Modules.Tasks.Application\ToDoApp.Modules.Tasks.Application.csproj" />
   </ItemGroup>
 

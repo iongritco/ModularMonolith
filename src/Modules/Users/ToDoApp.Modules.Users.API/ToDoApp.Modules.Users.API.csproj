@@ -8,6 +8,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+		<PackageReference Include="Mapster" Version="7.4.0" />
 		<PackageReference Include="MediatR" Version="12.2.0" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.0" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
@@ -17,6 +18,7 @@
 	  <ProjectReference Include="..\..\..\Shared\ToDoApp.EventBus.MassTransit\ToDoApp.EventBus.MassTransit.csproj" />
 	  <ProjectReference Include="..\..\..\Shared\ToDoApp.SyncBus\ToDoApp.SyncBus.csproj" />
 	  <ProjectReference Include="..\ToDoApp.Modules.Users.Application\ToDoApp.Modules.Users.Application.csproj" />
+	  <ProjectReference Include="..\ToDoApp.Modules.Users.Contracts\ToDoApp.Modules.Users.Contracts.csproj" />
 	  <ProjectReference Include="..\ToDoApp.Modules.Users.Identity\ToDoApp.Modules.Users.Identity.csproj" />
 	  <ProjectReference Include="..\ToDoApp.Modules.Users.Persistence\ToDoApp.Modules.Users.Persistence.csproj" />
 	</ItemGroup>
