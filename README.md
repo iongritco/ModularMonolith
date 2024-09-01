@@ -8,14 +8,14 @@ A playground for experimenting projects with a Modular Monolith Architecture - D
 - Set as startup the ToDoApp.Client.Blazor and ToDoApp.Server.API projects.
 
 ### Health checks
-Server has both API and UI for checking the health of dependencies, in this case SQL Server and MassTransit:
-- API - default address: https://localhost:5002/api/health
+Server has both endpoint and UI for checking the health of dependencies, in this case SQL Server and MassTransit:
+- Endpoint - default address: https://localhost:5002/api/health
 - UI - default address: https://localhost:5002/healthchecks-ui
 
 ### Modules communications
 There are two ways of communicating between modules:
 1) Asynchronous - via MassTransit that runs locally
-2) Synchronous - in two ways, you can check TasksModule for reference, CreateToDoCommandHandler command:
+2) Synchronous - in two ways, you can check TasksModule for reference, CreateToDoCommandHandler command and implementations for IUsersApiClient:
     - via Contracts projects - direct dependency on Contracts project without direct dependency on any other module component
     - via SyncBus - dynamically by providing a route that runs dynamically the request, no direct dependency
     
