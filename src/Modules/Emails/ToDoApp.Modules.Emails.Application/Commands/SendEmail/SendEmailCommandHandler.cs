@@ -1,20 +1,19 @@
 ﻿using MediatR;
 using ToDoApp.Modules.Emails.Application.Interfaces;
 
-namespace ToDoApp.Modules.Emails.Application.Commands.SendEmail
+namespace ToDoApp.Modules.Emails.Application.Commands.SendEmail;
+
+public class SendEmailCommandHandler : IRequestHandler<SendEmailCommand>
 {
-    public class SendEmailCommandHandler : IRequestHandler<SendEmailCommand>
+    private readonly IEmailService _emailService;
+
+    public SendEmailCommandHandler(IEmailService emailService)
     {
-        private readonly IEmailService _emailService;
+        _emailService = emailService;
+    }
 
-        public SendEmailCommandHandler(IEmailService emailService)
-        {
-            _emailService = emailService;
-        }
-
-        public async Task Handle(SendEmailCommand request, CancellationToken cancellationToken)
-        {
-            await _emailService.SendEmail(new Domain.Entities.Email(request.Email, request.Description));
-        }
+    public async Task Handle(SendEmailCommand request, CancellationToken cancellationToken)
+    {
+        await _emailService.SendEmail(new Domain.Entities.Email(request.Email, request.Description));
     }
 }

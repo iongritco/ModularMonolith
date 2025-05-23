@@ -4,29 +4,28 @@ using ToDoApp.Modules.Tasks.Application.Exceptions;
 using ToDoApp.Modules.Tasks.Application.Interfaces;
 using ToDoApp.Modules.Tasks.Domain.Entities;
 
-namespace ToDoApp.Modules.Tasks.Application.Commands.CreateTask
+namespace ToDoApp.Modules.Tasks.Application.Commands.CreateTask;
+
+public class CreateToDoCommandHandler : IRequestHandler<CreateTaskCommand>
 {
-    public class CreateToDoCommandHandler : IRequestHandler<CreateTaskCommand>
+    private readonly ITasksCommandRepository _commandRepository;
+    private readonly IUsersApiClient _usersApiClient;
+
+    public CreateToDoCommandHandler(ITasksCommandRepository commandRepository, IUsersApiClient usersApiClient)
     {
-        private readonly ITasksCommandRepository _commandRepository;
-        private readonly IUsersApiClient _usersApiClient;
+        _commandRepository = commandRepository;
+        _usersApiClient = usersApiClient;
+    }
 
-        public CreateToDoCommandHandler(ITasksCommandRepository commandRepository, IUsersApiClient usersApiClient)
+    public async Task Handle(CreateTaskCommand request, CancellationToken cancellationToken)
+    {
+        var user = await _usersApiClient.GetUser(request.Username);
+        if (user is null)
         {
-            _commandRepository = commandRepository;
-            _usersApiClient = usersApiClient;
+            throw new UserNotFoundException(request.Username);
         }
 
-        public async Task Handle(CreateTaskCommand request, CancellationToken cancellationToken)
-        {
-            var user = await _usersApiClient.GetUser(request.Username);
-            if (user is null)
-            {
-                throw new UserNotFoundException(request.Username);
-            }
-
-            var toDo = new ToDoItem(request.Id, request.Description, request.Username);
-            await _commandRepository.CreateToDo(toDo);
-        }
+        var toDo = new ToDoItem(request.Id, request.Description, request.Username);
+        await _commandRepository.CreateToDo(toDo);
     }
 }

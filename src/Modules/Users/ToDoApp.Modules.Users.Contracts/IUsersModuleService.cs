@@ -1,9 +1,8 @@
 ﻿using ToDoApp.Modules.Users.Contracts.DTOs;
 
-namespace ToDoApp.Modules.Users.Contracts
+namespace ToDoApp.Modules.Users.Contracts;
+
+public interface IUsersModuleService
 {
-    public interface IUsersModuleService
-    {
-        public Task<UserDto> GetUser(string email);
-    }
+    public Task<UserDto> GetUser(string email);
 }

@@ -1,13 +1,12 @@
-﻿namespace ToDoApp.Common.Interfaces
+﻿namespace ToDoApp.Common.Interfaces;
+
+public interface ISerializer
 {
-    public interface ISerializer
-    {
-        byte[] Serialize<T>(T value);
+    byte[] Serialize<T>(T value);
 
-        T Deserialize<T>(byte[] value);
+    T Deserialize<T>(byte[] value);
 
-        object TranslateType(object value, Type type);
+    object TranslateType(object value, Type type);
 
-        T TranslateType<T>(object value);
-    }
+    T TranslateType<T>(object value);
 }

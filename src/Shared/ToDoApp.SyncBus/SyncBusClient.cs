@@ -1,31 +1,30 @@
 ﻿using ToDoApp.Common.Interfaces;
 using ToDoApp.SyncBus.Interfaces;
 
-namespace ToDoApp.SyncBus
+namespace ToDoApp.SyncBus;
+
+public class SyncBusClient : ISyncBusClient
 {
-    public class SyncBusClient : ISyncBusClient
+    private readonly ISyncBusRegistry _syncBusRegistry;
+    private readonly ISerializer _serializer;
+
+    public SyncBusClient(ISyncBusRegistry syncBusRegistry, ISerializer serializer)
     {
-        private readonly ISyncBusRegistry _syncBusRegistry;
-        private readonly ISerializer _serializer;
+        _syncBusRegistry = syncBusRegistry;
+        _serializer = serializer;
+    }
 
-        public SyncBusClient(ISyncBusRegistry syncBusRegistry, ISerializer serializer)
+    public async Task<TResult> SendAsync<TResult>(string key, object request) where TResult : class
+    {
+        var registration = _syncBusRegistry.GetSyncBusRegistration(key);
+        if (registration is null)
         {
-            _syncBusRegistry = syncBusRegistry;
-            _serializer = serializer;
+            throw new InvalidOperationException($"No action has been defined for key: '{key}'.");
         }
 
-        public async Task<TResult> SendAsync<TResult>(string key, object request) where TResult : class
-        {
-            var registration = _syncBusRegistry.GetSyncBusRegistration(key);
-            if (registration is null)
-            {
-                throw new InvalidOperationException($"No action has been defined for key: '{key}'.");
-            }
+        var receiverRequest = _serializer.TranslateType(request, registration.RequestType);
+        var result = await registration.Action(receiverRequest);
 
-            var receiverRequest = _serializer.TranslateType(request, registration.RequestType);
-            var result = await registration.Action(receiverRequest);
-
-            return result is null ? null : _serializer.TranslateType<TResult>(result);
-        }
+        return result is null ? null : _serializer.TranslateType<TResult>(result);
     }
 }

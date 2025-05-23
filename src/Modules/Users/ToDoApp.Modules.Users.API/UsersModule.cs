@@ -15,38 +15,37 @@ using ToDoApp.Modules.Users.Identity.Users;
 using ToDoApp.Modules.Users.Persistence;
 using ToDoApp.SyncBus;
 
-namespace ToDoApp.Modules.Users.API
+namespace ToDoApp.Modules.Users.API;
+
+public static class UsersModule
 {
-    public static class UsersModule
+    public static IServiceCollection AddUsersModule(this IServiceCollection services, ConfigurationManager configuration)
     {
-        public static IServiceCollection AddUsersModule(this IServiceCollection services, ConfigurationManager configuration)
-        {
-            services.AddSingleton<ISettings, Settings>();
-            services.AddTransient<IIdentityService, IdentityService>();
-            services.AddTransient<ITokenService, JwtTokenService>();
-            services.AddTransient<IUsersModuleService, UsersModuleService>();
-            services.AddIdentity<ApplicationUser, IdentityRole<Guid>>()
-                .AddEntityFrameworkStores<UsersContext>()
-                .AddDefaultTokenProviders();
-            services.AddDbContext<UsersContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("ToDoConnection")));
+        services.AddSingleton<ISettings, Settings>();
+        services.AddTransient<IIdentityService, IdentityService>();
+        services.AddTransient<ITokenService, JwtTokenService>();
+        services.AddTransient<IUsersModuleService, UsersModuleService>();
+        services.AddIdentity<ApplicationUser, IdentityRole<Guid>>()
+            .AddEntityFrameworkStores<UsersContext>()
+            .AddDefaultTokenProviders();
+        services.AddDbContext<UsersContext>(options =>
+            options.UseSqlServer(configuration.GetConnectionString("ToDoConnection")));
 
-            return services;
-        }
+        return services;
+    }
 
-        public static IApplicationBuilder UseUsersModule(this IApplicationBuilder app)
-        {
-            InitializeDatabase(app);
-            app.UseSyncBus().Subscribe<GetUserByEmailCommand, User>("getUserByEmail",
-                (command, serviceProvider) => serviceProvider.GetRequiredService<IMediator>().Send(command));
-            
-            return app;
-        }
+    public static IApplicationBuilder UseUsersModule(this IApplicationBuilder app)
+    {
+        InitializeDatabase(app);
+        app.UseSyncBus().Subscribe<GetUserByEmailCommand, User>("getUserByEmail",
+            (command, serviceProvider) => serviceProvider.GetRequiredService<IMediator>().Send(command));
+        
+        return app;
+    }
 
-        private static void InitializeDatabase(IApplicationBuilder app)
-        {
-            using var scope = app.ApplicationServices.GetService<IServiceScopeFactory>()?.CreateScope();
-            scope.ServiceProvider.GetRequiredService<UsersContext>().Database.Migrate();
-        }
+    private static void InitializeDatabase(IApplicationBuilder app)
+    {
+        using var scope = app.ApplicationServices.GetService<IServiceScopeFactory>()?.CreateScope();
+        scope.ServiceProvider.GetRequiredService<UsersContext>().Database.Migrate();
     }
 }

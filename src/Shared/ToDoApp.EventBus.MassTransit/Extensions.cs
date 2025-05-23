@@ -3,29 +3,28 @@ using MassTransit;
 using Microsoft.Extensions.DependencyInjection;
 using ToDoApp.EventBus.Interfaces;
 
-namespace ToDoApp.EventBus.MassTransit
+namespace ToDoApp.EventBus.MassTransit;
+
+public static class Extensions
 {
-    public static class Extensions
+    public static IServiceCollection AddMassTransit(this IServiceCollection services, params Assembly[] assemblies)
     {
-        public static IServiceCollection AddMassTransit(this IServiceCollection services, params Assembly[] assemblies)
+        services.AddMassTransit(x =>
         {
-            services.AddMassTransit(x =>
-            {
-                x.SetKebabCaseEndpointNameFormatter();
+            x.SetKebabCaseEndpointNameFormatter();
 
-                x.SetInMemorySagaRepositoryProvider();
+            x.SetInMemorySagaRepositoryProvider();
 
-                x.AddConsumers(assemblies);
-                x.AddSagaStateMachines(assemblies);
-                x.AddSagas(assemblies);
-                x.AddActivities(assemblies);
+            x.AddConsumers(assemblies);
+            x.AddSagaStateMachines(assemblies);
+            x.AddSagas(assemblies);
+            x.AddActivities(assemblies);
 
-                x.UsingInMemory((context, cfg) => { cfg.ConfigureEndpoints(context); });
-            });
+            x.UsingInMemory((context, cfg) => { cfg.ConfigureEndpoints(context); });
+        });
 
-            services.AddScoped<IEventBus, EventBus>();
+        services.AddScoped<IEventBus, EventBus>();
 
-            return services;
-        }
+        return services;
     }
 }

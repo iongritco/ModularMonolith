@@ -1,12 +1,11 @@
 ﻿using FluentValidation;
 
-namespace ToDoApp.Modules.Users.Application.Queries.GetUserByEmail
+namespace ToDoApp.Modules.Users.Application.Queries.GetUserByEmail;
+
+public class GetUserByEmailCommandValidator : AbstractValidator<GetUserByEmailCommand>
 {
-    public class GetUserByEmailCommandValidator : AbstractValidator<GetUserByEmailCommand>
+    public GetUserByEmailCommandValidator()
     {
-        public GetUserByEmailCommandValidator()
-        {
-            RuleFor(x => x.Email).NotEmpty();
-        }
+        RuleFor(x => x.Email).NotEmpty();
     }
 }

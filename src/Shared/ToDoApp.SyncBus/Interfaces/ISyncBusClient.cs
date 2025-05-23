@@ -1,7 +1,6 @@
-﻿namespace ToDoApp.SyncBus.Interfaces
+﻿namespace ToDoApp.SyncBus.Interfaces;
+
+public interface ISyncBusClient
 {
-    public interface ISyncBusClient
-    {
-        Task<TResult> SendAsync<TResult>(string key, object request) where TResult : class;
-    }
+    Task<TResult> SendAsync<TResult>(string key, object request) where TResult : class;
 }

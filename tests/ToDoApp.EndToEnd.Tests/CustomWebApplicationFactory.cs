@@ -7,41 +7,40 @@ using ToDoApp.Modules.Tasks.Persistence;
 using ToDoApp.Modules.Users.Persistence;
 using ToDoApp.Server.API;
 
-namespace ToDoApp.Tests.EndToEnd
+namespace ToDoApp.Tests.EndToEnd;
+
+public class CustomWebApplicationFactory : WebApplicationFactory<Program>
 {
-    public class CustomWebApplicationFactory : WebApplicationFactory<Program>
+    protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
-        protected override void ConfigureWebHost(IWebHostBuilder builder)
+        builder.ConfigureAppConfiguration(configurationBuilder =>
         {
-            builder.ConfigureAppConfiguration(configurationBuilder =>
-            {
-                var integrationConfig = new ConfigurationBuilder()
-                    .AddJsonFile("appsettings.json")
-                    .AddEnvironmentVariables()
-                    .Build();
+            var integrationConfig = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json")
+                .AddEnvironmentVariables()
+                .Build();
 
-                configurationBuilder.AddConfiguration(integrationConfig);
-            });
+            configurationBuilder.AddConfiguration(integrationConfig);
+        });
 
-            builder.ConfigureServices((builder, services) =>
-            {
-                var tasksContextService = services.SingleOrDefault(
-                    d => d.ServiceType == typeof(DbContextOptions<TasksContext>));
-                services.Remove(tasksContextService);                
-                
-                var usersContextService = services.SingleOrDefault(
-                    d => d.ServiceType == typeof(DbContextOptions<UsersContext>));
-                services.Remove(usersContextService);
+        builder.ConfigureServices((builder, services) =>
+        {
+            var tasksContextService = services.SingleOrDefault(
+                d => d.ServiceType == typeof(DbContextOptions<TasksContext>));
+            services.Remove(tasksContextService);                
+            
+            var usersContextService = services.SingleOrDefault(
+                d => d.ServiceType == typeof(DbContextOptions<UsersContext>));
+            services.Remove(usersContextService);
 
-                services.AddDbContext<TasksContext>(options =>
-                    options.UseSqlServer(builder.Configuration.GetConnectionString("ToDoConnection"),
-                        builder => builder.MigrationsAssembly(typeof(TasksContext).Assembly.FullName)));
+            services.AddDbContext<TasksContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("ToDoConnection"),
+                    builder => builder.MigrationsAssembly(typeof(TasksContext).Assembly.FullName)));
 
 
-                services.AddDbContext<UsersContext>(options =>
-                    options.UseSqlServer(builder.Configuration.GetConnectionString("ToDoConnection"),
-                        builder => builder.MigrationsAssembly(typeof(UsersContext).Assembly.FullName)));
-            });
-        }
+            services.AddDbContext<UsersContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("ToDoConnection"),
+                    builder => builder.MigrationsAssembly(typeof(UsersContext).Assembly.FullName)));
+        });
     }
 }

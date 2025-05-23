@@ -1,17 +1,16 @@
 ﻿using MediatR;
 
-namespace ToDoApp.Modules.Tasks.Application.Commands.DeleteTask
+namespace ToDoApp.Modules.Tasks.Application.Commands.DeleteTask;
+
+public class DeleteToDoCommand : IRequest
 {
-    public class DeleteToDoCommand : IRequest
+    public DeleteToDoCommand(Guid id, string username)
     {
-        public DeleteToDoCommand(Guid id, string username)
-        {
-            Id = id;
-            Username = username;
-        }
-
-        public Guid Id { get; }
-
-        public string Username { get; }
+        Id = id;
+        Username = username;
     }
+
+    public Guid Id { get; }
+
+    public string Username { get; }
 }

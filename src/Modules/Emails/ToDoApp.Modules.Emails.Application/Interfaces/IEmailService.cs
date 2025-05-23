@@ -1,9 +1,8 @@
 ﻿using ToDoApp.Modules.Emails.Domain.Entities;
 
-namespace ToDoApp.Modules.Emails.Application.Interfaces
+namespace ToDoApp.Modules.Emails.Application.Interfaces;
+
+public interface IEmailService
 {
-    public interface IEmailService
-    {
-        Task SendEmail(Email email);
-    }
+    Task SendEmail(Email email);
 }

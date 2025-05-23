@@ -1,15 +1,14 @@
-﻿namespace ToDoApp.EventBus.Events
+﻿namespace ToDoApp.EventBus.Events;
+
+public class IntegrationEvent
 {
-    public class IntegrationEvent
+    public IntegrationEvent()
     {
-        public IntegrationEvent()
-        {
-            Id = Guid.NewGuid();
-            CreationDate = DateTime.UtcNow;
-        }
-
-        public Guid Id { get; }
-
-        public DateTime CreationDate { get; }      
+        Id = Guid.NewGuid();
+        CreationDate = DateTime.UtcNow;
     }
+
+    public Guid Id { get; }
+
+    public DateTime CreationDate { get; }      
 }

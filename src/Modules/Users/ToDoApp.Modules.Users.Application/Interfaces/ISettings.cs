@@ -1,7 +1,6 @@
-﻿namespace ToDoApp.Modules.Users.Application.Interfaces
+﻿namespace ToDoApp.Modules.Users.Application.Interfaces;
+
+public interface ISettings
 {
-    public interface ISettings
-    {
-        string TokenKey { get; }
-    }
+    string TokenKey { get; }
 }

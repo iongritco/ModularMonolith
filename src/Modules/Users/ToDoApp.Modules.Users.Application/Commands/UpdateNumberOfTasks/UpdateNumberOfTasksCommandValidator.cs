@@ -1,12 +1,11 @@
 ﻿using FluentValidation;
 
-namespace ToDoApp.Modules.Users.Application.Commands.UpdateNumberOfTasks
+namespace ToDoApp.Modules.Users.Application.Commands.UpdateNumberOfTasks;
+
+public class UpdateNumberOfTasksCommandValidator : AbstractValidator<UpdateNumberOfTasksCommand>
 {
-    public class UpdateNumberOfTasksCommandValidator : AbstractValidator<UpdateNumberOfTasksCommand>
+    public UpdateNumberOfTasksCommandValidator()
     {
-        public UpdateNumberOfTasksCommandValidator()
-        {
-            RuleFor(x => x.Email).NotEmpty();
-        }
+        RuleFor(x => x.Email).NotEmpty();
     }
 }

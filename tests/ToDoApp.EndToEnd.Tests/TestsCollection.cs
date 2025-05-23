@@ -1,9 +1,8 @@
 ﻿using Xunit;
 
-namespace ToDoApp.Tests.EndToEnd
+namespace ToDoApp.Tests.EndToEnd;
+
+[CollectionDefinition("Tests collection")]
+public class TestsCollection : ICollectionFixture<BaseTestsClass>
 {
-    [CollectionDefinition("Tests collection")]
-    public class TestsCollection : ICollectionFixture<BaseTestsClass>
-    {
-    }
 }

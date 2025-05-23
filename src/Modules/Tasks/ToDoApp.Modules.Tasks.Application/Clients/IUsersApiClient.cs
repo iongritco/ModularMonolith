@@ -1,9 +1,8 @@
 ﻿using ToDoApp.Modules.Tasks.Application.Clients.DTOs;
 
-namespace ToDoApp.Modules.Tasks.Application.Clients
+namespace ToDoApp.Modules.Tasks.Application.Clients;
+
+public interface IUsersApiClient
 {
-    public interface IUsersApiClient
-    {
-        Task<UserDto> GetUser(string email);
-    }
+    Task<UserDto> GetUser(string email);
 }

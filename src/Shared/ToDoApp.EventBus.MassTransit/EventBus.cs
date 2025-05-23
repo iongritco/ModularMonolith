@@ -1,25 +1,24 @@
 ﻿using MassTransit;
 using ToDoApp.EventBus.Interfaces;
 
-namespace ToDoApp.EventBus.MassTransit
+namespace ToDoApp.EventBus.MassTransit;
+
+public class EventBus : IEventBus
 {
-    public class EventBus : IEventBus
+    private readonly IBus _bus;
+
+    public EventBus(IBus bus)
     {
-        private readonly IBus _bus;
+        _bus = bus;
+    }
 
-        public EventBus(IBus bus)
+    public async Task Publish<T>(T message)
+    {
+        if (message is null)
         {
-            _bus = bus;
+            return;
         }
 
-        public async Task Publish<T>(T message)
-        {
-            if (message is null)
-            {
-                return;
-            }
-
-            await _bus.Publish(message);
-        }
+        await _bus.Publish(message);
     }
 }

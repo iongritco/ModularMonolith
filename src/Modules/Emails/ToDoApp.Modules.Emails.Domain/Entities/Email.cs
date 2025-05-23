@@ -1,15 +1,14 @@
-﻿namespace ToDoApp.Modules.Emails.Domain.Entities
+﻿namespace ToDoApp.Modules.Emails.Domain.Entities;
+
+public class Email
 {
-    public class Email
+    public Email(string to, string body)
     {
-        public Email(string to, string body)
-        {
-            To = to;
-            Body = body;
-        }
-
-        public string To { get; }
-
-        public string Body { get; }
+        To = to;
+        Body = body;
     }
+
+    public string To { get; }
+
+    public string Body { get; }
 }

@@ -8,25 +8,24 @@ using ToDoApp.Modules.Tasks.Domain.Entities;
 using ToDoApp.Modules.Tasks.Domain.Enums;
 using Xunit;
 
-namespace ToDoApp.Module.Tasks.Tests.Application
+namespace ToDoApp.Module.Tasks.Tests.Application;
+
+public class GetToDoListQueryShould
 {
-    public class GetToDoListQueryShould
+    [Theory]
+    [AutoMoqData]
+    public async Task ReturnUnitValueWhenSuccessful(
+        GetTasksQuery query,
+        List<ToDoItem> toDoItems,
+        [Frozen] Mock<ITasksQueryRepository> todoQueryRepositoryMock,
+        GetTaskListQueryHandler sut)
     {
-        [Theory]
-        [AutoMoqData]
-        public async Task ReturnUnitValueWhenSuccessful(
-            GetTasksQuery query,
-            List<ToDoItem> toDoItems,
-            [Frozen] Mock<ITasksQueryRepository> todoQueryRepositoryMock,
-            GetTaskListQueryHandler sut)
-        {
-            var expectedItems = toDoItems.Where(x => x.Status != Status.Deleted).ToList();
-            todoQueryRepositoryMock.Setup(call => call.GetToDoList(It.IsAny<string>())).ReturnsAsync(toDoItems);
+        var expectedItems = toDoItems.Where(x => x.Status != Status.Deleted).ToList();
+        todoQueryRepositoryMock.Setup(call => call.GetToDoList(It.IsAny<string>())).ReturnsAsync(toDoItems);
 
-            var result = await sut.Handle(query, CancellationToken.None);
+        var result = await sut.Handle(query, CancellationToken.None);
 
-            result.Should().BeEquivalentTo(expectedItems);
-            todoQueryRepositoryMock.Verify(call => call.GetToDoList(It.IsAny<string>()), Times.Once);
-        }
+        result.Should().BeEquivalentTo(expectedItems);
+        todoQueryRepositoryMock.Verify(call => call.GetToDoList(It.IsAny<string>()), Times.Once);
     }
 }

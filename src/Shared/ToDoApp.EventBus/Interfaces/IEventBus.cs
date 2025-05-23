@@ -1,7 +1,6 @@
-﻿namespace ToDoApp.EventBus.Interfaces
+﻿namespace ToDoApp.EventBus.Interfaces;
+
+public interface IEventBus
 {
-    public interface IEventBus
-    {
-        Task Publish<T>(T message);
-    }
+    Task Publish<T>(T message);
 }

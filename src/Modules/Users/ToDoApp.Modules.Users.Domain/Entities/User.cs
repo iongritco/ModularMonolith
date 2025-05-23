@@ -1,18 +1,17 @@
-﻿namespace ToDoApp.Modules.Users.Domain.Entities
+﻿namespace ToDoApp.Modules.Users.Domain.Entities;
+
+public class User
 {
-    public class User
+    public User(string email, string name, string phoneNumber)
     {
-        public User(string email, string name, string phoneNumber)
-        {
-            Email = email;
-            Name = name;
-            PhoneNumber = phoneNumber;
-        }
-
-        public string Email { get; }
-
-        public string Name { get; }
-
-        public string PhoneNumber { get; }
+        Email = email;
+        Name = name;
+        PhoneNumber = phoneNumber;
     }
+
+    public string Email { get; }
+
+    public string Name { get; }
+
+    public string PhoneNumber { get; }
 }

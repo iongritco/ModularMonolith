@@ -6,22 +6,21 @@ using ToDoApp.Modules.Users.Application.Queries.GetUserByEmail;
 using ToDoApp.Modules.Users.Contracts;
 using ToDoApp.Modules.Users.Contracts.DTOs;
 
-namespace ToDoApp.Modules.Users.API.Services
+namespace ToDoApp.Modules.Users.API.Services;
+
+public class UsersModuleService : IUsersModuleService
 {
-    public class UsersModuleService : IUsersModuleService
+    private readonly IMediator _mediator;
+
+    public UsersModuleService(IMediator mediator)
     {
-        private readonly IMediator _mediator;
+        _mediator = mediator;
+    }
 
-        public UsersModuleService(IMediator mediator)
-        {
-            _mediator = mediator;
-        }
+    public async Task<UserDto> GetUser(string email)
+    {
+        var result = await _mediator.Send(new GetUserByEmailCommand(email));
 
-        public async Task<UserDto> GetUser(string email)
-        {
-            var result = await _mediator.Send(new GetUserByEmailCommand(email));
-
-            return result.Adapt<UserDto>();
-        }
+        return result.Adapt<UserDto>();
     }
 }

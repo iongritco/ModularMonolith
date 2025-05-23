@@ -1,30 +1,29 @@
 ﻿using MediatR;
 using ToDoApp.Modules.Users.Application.Interfaces;
 
-namespace ToDoApp.Modules.Users.Application.Queries.GetToken
+namespace ToDoApp.Modules.Users.Application.Queries.GetToken;
+
+public class GetTokenQueryHandler : IRequestHandler<GetTokenQuery, string>
 {
-    public class GetTokenQueryHandler : IRequestHandler<GetTokenQuery, string>
+    private readonly IIdentityService _identityService;
+    private readonly ITokenService _tokenService;
+
+    public GetTokenQueryHandler(IIdentityService identityService, ITokenService tokenService)
     {
-        private readonly IIdentityService _identityService;
-        private readonly ITokenService _tokenService;
+        _identityService = identityService;
+        _tokenService = tokenService;
+    }
 
-        public GetTokenQueryHandler(IIdentityService identityService, ITokenService tokenService)
+    public async Task<string> Handle(GetTokenQuery request, CancellationToken cancellationToken)
+    {
+        string token = null;
+
+        var isValid = await _identityService.Authenticate(request.Username, request.Password);
+        if (isValid)
         {
-            _identityService = identityService;
-            _tokenService = tokenService;
+            token = _tokenService.GenerateToken(request.Username);
         }
 
-        public async Task<string> Handle(GetTokenQuery request, CancellationToken cancellationToken)
-        {
-            string token = null;
-
-            var isValid = await _identityService.Authenticate(request.Username, request.Password);
-            if (isValid)
-            {
-                token = _tokenService.GenerateToken(request.Username);
-            }
-
-            return token;
-        }
+        return token;
     }
 }

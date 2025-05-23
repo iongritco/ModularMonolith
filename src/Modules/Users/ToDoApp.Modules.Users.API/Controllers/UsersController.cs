@@ -4,55 +4,54 @@ using Microsoft.AspNetCore.Mvc;
 using ToDoApp.Modules.Users.Application.Commands.RegisterUser;
 using ToDoApp.Modules.Users.Application.Queries.GetToken;
 
-namespace ToDoApp.Modules.Users.API.Controllers
+namespace ToDoApp.Modules.Users.API.Controllers;
+
+[Route("api/users")]
+[ApiController]
+[Authorize]
+public class UsersController : ControllerBase
 {
-    [Route("api/users")]
-    [ApiController]
-    [Authorize]
-    public class UsersController : ControllerBase
+    private readonly IMediator _mediator;
+
+    public UsersController(IMediator mediator)
     {
-        private readonly IMediator _mediator;
+        _mediator = mediator;
+    }
 
-        public UsersController(IMediator mediator)
+    [HttpPost]
+    [AllowAnonymous]
+    [Route("login")]
+    public async Task<IActionResult> Login(GetTokenQuery getTokenQuery)
+    {
+        var result = await _mediator.Send(getTokenQuery);
+        if (string.IsNullOrEmpty(result))
         {
-            _mediator = mediator;
+            return Forbid();
         }
 
-        [HttpPost]
-        [AllowAnonymous]
-        [Route("login")]
-        public async Task<IActionResult> Login(GetTokenQuery getTokenQuery)
-        {
-            var result = await _mediator.Send(getTokenQuery);
-            if (string.IsNullOrEmpty(result))
-            {
-                return Forbid();
-            }
+        return Ok(result);
+    }
 
-            return Ok(result);
+    [HttpPost]
+    [AllowAnonymous]
+    [Route("register")]
+    public async Task<IActionResult> RegisterUser(RegisterUserCommand registerUserCommand)
+    {
+        var result = await _mediator.Send(registerUserCommand);
+
+        if (!result.IsSuccessful)
+        {
+            return BadRequest(result.ErrorMessage);
         }
 
-        [HttpPost]
-        [AllowAnonymous]
-        [Route("register")]
-        public async Task<IActionResult> RegisterUser(RegisterUserCommand registerUserCommand)
-        {
-            var result = await _mediator.Send(registerUserCommand);
+        return Ok();
+    }
 
-            if (!result.IsSuccessful)
-            {
-                return BadRequest(result.ErrorMessage);
-            }
-
-            return Ok();
-        }
-
-        [HttpGet]
-        [Route("me/name")]
-        public IActionResult GetCurrentUser()
-        {
-            var currentUser = User.Identity.IsAuthenticated ? User.Identity.Name : null;
-            return Ok(currentUser);
-        }
+    [HttpGet]
+    [Route("me/name")]
+    public IActionResult GetCurrentUser()
+    {
+        var currentUser = User.Identity.IsAuthenticated ? User.Identity.Name : null;
+        return Ok(currentUser);
     }
 }
