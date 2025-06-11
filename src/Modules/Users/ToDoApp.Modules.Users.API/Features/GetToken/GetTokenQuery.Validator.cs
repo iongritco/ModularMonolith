@@ -2,9 +2,9 @@
 
 namespace ToDoApp.Modules.Users.API.Features.GetToken;
 
-public class GetTokenValidator : AbstractValidator<GetTokenQuery>
+public class GetTokenQueryValidator : AbstractValidator<GetTokenQuery>
 {
-	public GetTokenValidator()
+	public GetTokenQueryValidator()
 	{
 		RuleFor(x => x.Password).NotEmpty();
 		RuleFor(x => x.Username).NotEmpty();
