@@ -11,12 +11,12 @@ public class ArchitectureTests : ArchitectureSetup
 		// Assert
 		string[] dependencies =
 		[
-			UsersApplicationAssemblyName, UsersIdentityAssemblyName, UsersPersistenceAssemblyName, UsersPresentationAssemblyName, UsersContractsAssemblyName,
+			UsersContractsAssemblyName,
 			TasksApplicationAssemblyName, TasksInfrastructureAssemblyName, TasksPersistenceAssemblyName, TasksPresentationAssemblyName,
 			EmailsApplicationAssemblyName, EmailsInfrastructureAssemblyName, EmailsPresentationAssemblyName
 		];
 
-		Assembly[] assemblies = [UsersDomainAssembly, TasksDomainAssembly, EmailsDomainAssembly];
+		Assembly[] assemblies = [TasksDomainAssembly, EmailsDomainAssembly];
 
 		// Act
 		var isSuccessful = Types.InAssemblies(assemblies)
@@ -34,7 +34,7 @@ public class ArchitectureTests : ArchitectureSetup
         // Assert
 		string[] dependencies =
 		[
-			UsersApplicationAssemblyName, UsersIdentityAssemblyName, UsersPersistenceAssemblyName, UsersPresentationAssemblyName, UsersDomainAssemblyName,
+			UsersModuleAssemblyName,
 			TasksApplicationAssemblyName, TasksInfrastructureAssemblyName, TasksPersistenceAssemblyName, TasksPresentationAssemblyName, TasksDomainAssemblyName,
 			EmailsApplicationAssemblyName, EmailsInfrastructureAssemblyName, EmailsPresentationAssemblyName, EmailsDomainAssemblyName
 		];
@@ -57,12 +57,12 @@ public class ArchitectureTests : ArchitectureSetup
 		// Assert
 		string[] dependencies =
 		[
-			UsersIdentityAssemblyName, UsersPersistenceAssemblyName, UsersPresentationAssemblyName, UsersContractsAssemblyName,
+			UsersContractsAssemblyName,
             TasksInfrastructureAssemblyName, TasksPersistenceAssemblyName, TasksPresentationAssemblyName,
 			EmailsInfrastructureAssemblyName, EmailsPresentationAssemblyName
 		];
 
-		Assembly[] assemblies = [UsersApplicationAssembly, TasksApplicationAssembly, EmailsApplicationAssembly];
+		Assembly[] assemblies = [TasksApplicationAssembly, EmailsApplicationAssembly];
 
 		// Act
 		var isSuccessful = Types.InAssemblies(assemblies)
@@ -80,12 +80,11 @@ public class ArchitectureTests : ArchitectureSetup
 		// Assert
 		string[] dependencies =
 		[
-			UsersPersistenceAssemblyName, UsersPresentationAssemblyName,
 			TasksPersistenceAssemblyName, TasksPresentationAssemblyName,
 			EmailsPresentationAssemblyName
 		];
 
-		Assembly[] assemblies = [UsersIdentityAssembly, TasksInfrastructureAssembly, EmailsInfrastructureAssembly];
+		Assembly[] assemblies = [TasksInfrastructureAssembly, EmailsInfrastructureAssembly];
 
 		// Act
 		var isSuccessful = Types.InAssemblies(assemblies)
@@ -107,7 +106,7 @@ public class ArchitectureTests : ArchitectureSetup
 			EmailsDomainAssemblyName, EmailsApplicationAssemblyName, EmailsInfrastructureAssemblyName, EmailsPresentationAssemblyName
 		];
 
-		Assembly[] assemblies = [UsersDomainAssembly, UsersApplicationAssembly, UsersIdentityAssembly, UsersPersistenceAssembly, UsersPresentationAssembly];
+		Assembly[] assemblies = [UsersModuleAssembly];
 
 		// Act
 		var isSuccessful = Types.InAssemblies(assemblies)
@@ -125,8 +124,8 @@ public class ArchitectureTests : ArchitectureSetup
 		// Assert
 		string[] dependencies =
 		[
-			UsersDomainAssemblyName, UsersApplicationAssemblyName, UsersIdentityAssemblyName, UsersPersistenceAssemblyName, UsersPresentationAssemblyName,
-			EmailsDomainAssemblyName, EmailsApplicationAssemblyName, EmailsInfrastructureAssemblyName, EmailsPresentationAssemblyName
+            UsersModuleAssemblyName,
+            EmailsDomainAssemblyName, EmailsApplicationAssemblyName, EmailsInfrastructureAssemblyName, EmailsPresentationAssemblyName
 		];
 
 		Assembly[] assemblies = [TasksDomainAssembly, TasksApplicationAssembly, TasksInfrastructureAssembly, TasksPersistenceAssembly, TasksPresentationAssembly];
@@ -147,8 +146,8 @@ public class ArchitectureTests : ArchitectureSetup
 		// Assert
 		string[] dependencies =
 		[
-			UsersDomainAssemblyName, UsersApplicationAssemblyName, UsersIdentityAssemblyName, UsersPersistenceAssemblyName, UsersPresentationAssemblyName,
-			TasksDomainAssemblyName, TasksApplicationAssemblyName, TasksInfrastructureAssemblyName, TasksPersistenceAssemblyName, TasksPresentationAssemblyName
+            UsersModuleAssemblyName,
+            TasksDomainAssemblyName, TasksApplicationAssemblyName, TasksInfrastructureAssemblyName, TasksPersistenceAssemblyName, TasksPresentationAssemblyName
 		];
 
 		Assembly[] assemblies = [EmailsDomainAssembly, EmailsApplicationAssembly, EmailsInfrastructureAssembly, EmailsPresentationAssembly];

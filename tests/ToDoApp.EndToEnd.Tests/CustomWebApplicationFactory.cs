@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ToDoApp.Modules.Tasks.Persistence;
+using ToDoApp.Modules.Users.API.Infrastructure.Persistence;
 using ToDoApp.Modules.Users.Persistence;
 using ToDoApp.Server.API;
 

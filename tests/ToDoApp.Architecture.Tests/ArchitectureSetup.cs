@@ -10,29 +10,21 @@ using ToDoApp.Modules.Tasks.Domain.Entities;
 using ToDoApp.Modules.Tasks.Infrastructure;
 using ToDoApp.Modules.Tasks.Persistence.ToDo;
 using ToDoApp.Modules.Users.API;
-using ToDoApp.Modules.Users.Application.Interfaces;
+using ToDoApp.Modules.Users.API.Infrastructure;
+using ToDoApp.Modules.Users.API.Infrastructure.Interfaces;
+using ToDoApp.Modules.Users.API.Infrastructure.Persistence;
+using ToDoApp.Modules.Users.API.Models.Entities;
 using ToDoApp.Modules.Users.Contracts;
-using ToDoApp.Modules.Users.Domain.Entities;
-using ToDoApp.Modules.Users.Identity.Users;
-using ToDoApp.Modules.Users.Persistence;
 
 namespace ToDoApp.Architecture.Tests;
 
 public class ArchitectureSetup
 {
     // Users module
-    protected static readonly Assembly UsersDomainAssembly = typeof(User).Assembly;
-    protected static readonly Assembly UsersApplicationAssembly = typeof(IIdentityService).Assembly;
-    protected static readonly Assembly UsersIdentityAssembly = typeof(IdentityService).Assembly;
-    protected static readonly Assembly UsersPersistenceAssembly = typeof(UsersContext).Assembly;
-    protected static readonly Assembly UsersPresentationAssembly = typeof(UsersModule).Assembly;
+    protected static readonly Assembly UsersModuleAssembly = typeof(UsersModule).Assembly;
     protected static readonly Assembly UsersContractsAssembly = typeof(IUsersModuleService).Assembly;
-    protected static readonly string? UsersDomainAssemblyName = UsersDomainAssembly.GetName().Name;
-    protected static readonly string? UsersApplicationAssemblyName = UsersApplicationAssembly.GetName().Name;
-    protected static readonly string? UsersIdentityAssemblyName = UsersIdentityAssembly.GetName().Name;
-    protected static readonly string? UsersPersistenceAssemblyName = UsersPersistenceAssembly.GetName().Name;
-    protected static readonly string? UsersPresentationAssemblyName = UsersPresentationAssembly.GetName().Name;
     protected static readonly string? UsersContractsAssemblyName = UsersContractsAssembly.GetName().Name;
+    protected static readonly string? UsersModuleAssemblyName = UsersModuleAssembly.GetName().Name;
 
     // Tasks module
     protected static readonly Assembly TasksDomainAssembly = typeof(ToDoItem).Assembly;

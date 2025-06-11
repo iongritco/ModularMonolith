@@ -4,5 +4,5 @@ namespace ToDoApp.Modules.Users.Contracts;
 
 public interface IUsersModuleService
 {
-    public Task<UserDto> GetUser(string email);
+	public Task<UserDto> GetUser(string email);
 }

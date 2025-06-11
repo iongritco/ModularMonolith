@@ -20,7 +20,7 @@ using ToDoApp.Modules.Emails.Application.Commands.SendEmail;
 using ToDoApp.Modules.Tasks.API;
 using ToDoApp.Modules.Tasks.Application.Queries;
 using ToDoApp.Modules.Users.API;
-using ToDoApp.Modules.Users.Application.Queries.GetToken;
+using ToDoApp.Modules.Users.API.Features.GetToken;
 using ToDoApp.Server.API.Pipelines;
 using ToDoApp.SyncBus;
 
