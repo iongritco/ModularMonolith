@@ -2,6 +2,8 @@
 
 # ModularMonolith
 A playground for experimenting projects with a Modular Monolith Architecture - DDD, CQRS, MediatR, .NET 9, Entity Framework Core
+- Tasks and Emails modules implement DDD with CQRS
+- UsersModule uses a Vertical Slice Architecture, demonstrating that each module can adopt its own design approach
 
 ## Setup
 - To get started, just create the databases ToDo and ToDo_Tests and update the connection string in appsettings (both in ToDoApp.Server.API and in ToDoApp.Tests.EndToEnd for integration tests) - the migration will be executed automatically on the first run. 
