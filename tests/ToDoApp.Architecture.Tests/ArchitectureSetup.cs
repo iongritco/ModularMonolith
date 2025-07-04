@@ -10,10 +10,6 @@ using ToDoApp.Modules.Tasks.Domain.Entities;
 using ToDoApp.Modules.Tasks.Infrastructure;
 using ToDoApp.Modules.Tasks.Persistence.ToDo;
 using ToDoApp.Modules.Users.API;
-using ToDoApp.Modules.Users.API.Infrastructure;
-using ToDoApp.Modules.Users.API.Infrastructure.Interfaces;
-using ToDoApp.Modules.Users.API.Infrastructure.Persistence;
-using ToDoApp.Modules.Users.API.Models.Entities;
 using ToDoApp.Modules.Users.Contracts;
 
 namespace ToDoApp.Architecture.Tests;

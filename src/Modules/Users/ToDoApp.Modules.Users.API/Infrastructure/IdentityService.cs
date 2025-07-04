@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
+
 using ToDoApp.Common.Generics;
+using ToDoApp.Modules.Users.API.Domain;
+using ToDoApp.Modules.Users.API.Domain.Entities;
 using ToDoApp.Modules.Users.API.Infrastructure.Interfaces;
-using ToDoApp.Modules.Users.API.Models;
-using ToDoApp.Modules.Users.API.Models.Entities;
 
 namespace ToDoApp.Modules.Users.API.Infrastructure;
 

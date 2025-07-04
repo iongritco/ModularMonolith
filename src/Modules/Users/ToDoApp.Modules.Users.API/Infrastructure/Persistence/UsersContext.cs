@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using ToDoApp.Modules.Users.API.Models;
+
+using ToDoApp.Modules.Users.API.Domain;
 
 namespace ToDoApp.Modules.Users.API.Infrastructure.Persistence;
 

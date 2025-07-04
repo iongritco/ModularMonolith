@@ -1,8 +1,10 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+
 using Microsoft.IdentityModel.Tokens;
+
+using ToDoApp.Modules.Users.API.Domain;
 using ToDoApp.Modules.Users.API.Infrastructure.Interfaces;
-using ToDoApp.Modules.Users.API.Models;
 
 namespace ToDoApp.Modules.Users.API.Infrastructure;
 

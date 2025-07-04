@@ -1,7 +1,7 @@
 ﻿
 using Microsoft.AspNetCore.Identity;
 
-namespace ToDoApp.Modules.Users.API.Models;
+namespace ToDoApp.Modules.Users.API.Domain;
 
 public class ApplicationUser : IdentityUser<Guid>
 {

@@ -1,10 +1,12 @@
 ﻿using Mapster;
+
 using MediatR;
+
 using ToDoApp.Modules.Users.API.Features.GetUserByEmail;
 using ToDoApp.Modules.Users.Contracts;
 using ToDoApp.Modules.Users.Contracts.DTOs;
 
-namespace ToDoApp.Modules.Users.API.Infrastructure;
+namespace ToDoApp.Modules.Users.API.Integrations;
 
 public class UsersModuleService : IUsersModuleService
 {

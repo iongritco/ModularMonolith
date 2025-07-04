@@ -3,10 +3,12 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+
+using ToDoApp.Modules.Users.API.Domain;
 using ToDoApp.Modules.Users.API.Infrastructure;
 using ToDoApp.Modules.Users.API.Infrastructure.Interfaces;
 using ToDoApp.Modules.Users.API.Infrastructure.Persistence;
-using ToDoApp.Modules.Users.API.Models;
+using ToDoApp.Modules.Users.API.Integrations;
 using ToDoApp.Modules.Users.Contracts;
 
 namespace ToDoApp.Modules.Users.API;

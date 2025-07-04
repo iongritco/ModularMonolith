@@ -1,4 +1,4 @@
-﻿namespace ToDoApp.Modules.Users.API.Models.Exceptions;
+﻿namespace ToDoApp.Modules.Users.API.Domain.Exceptions;
 
 public class UserNotFoundException : Exception
 {

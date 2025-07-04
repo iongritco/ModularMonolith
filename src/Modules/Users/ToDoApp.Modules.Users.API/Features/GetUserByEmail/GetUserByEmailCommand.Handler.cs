@@ -1,8 +1,10 @@
 ﻿using MediatR;
+
 using Microsoft.Extensions.Logging;
+
+using ToDoApp.Modules.Users.API.Domain.Entities;
 using ToDoApp.Modules.Users.API.Infrastructure.Interfaces;
-using ToDoApp.Modules.Users.API.Models.Entities;
-using ToDoApp.Modules.Users.API.Models.Exceptions;
+using ToDoApp.Modules.Users.API.Domain.Exceptions;
 
 namespace ToDoApp.Modules.Users.API.Features.GetUserByEmail;
 

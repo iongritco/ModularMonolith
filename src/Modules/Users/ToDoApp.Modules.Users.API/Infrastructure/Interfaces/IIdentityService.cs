@@ -1,5 +1,5 @@
 ﻿using ToDoApp.Common.Generics;
-using ToDoApp.Modules.Users.API.Models.Entities;
+using ToDoApp.Modules.Users.API.Domain.Entities;
 
 namespace ToDoApp.Modules.Users.API.Infrastructure.Interfaces;
 

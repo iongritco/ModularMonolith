@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 
-namespace ToDoApp.Modules.Users.API.Models;
+namespace ToDoApp.Modules.Users.API.Domain;
 
 public class Settings
 {
