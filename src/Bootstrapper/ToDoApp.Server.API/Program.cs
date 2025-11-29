@@ -7,10 +7,8 @@ using HealthChecks.UI.Client;
 using MediatR;
 
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
 using ToDoApp.Common;
@@ -36,14 +34,6 @@ public class Program
         builder.Services
             .AddHealthChecks()
             .AddSqlServer(builder.Configuration["ConnectionStrings:ToDoConnection"], healthQuery: "select 1", name: "SQL Server", failureStatus: HealthStatus.Unhealthy, tags: new[] { "Database" });
-        builder.Services.AddHealthChecksUI(opt =>
-        {
-            opt.SetEvaluationTimeInSeconds(10); //time in seconds between check    
-            opt.MaximumHistoryEntriesPerEndpoint(60); //maximum history of checks    
-            opt.SetApiMaxActiveRequests(1); //api requests concurrency    
-            opt.AddHealthCheckEndpoint("TODO API", "/api/health"); //map health check api    
-
-        }).AddInMemoryStorage();
 
         // Add modules
         builder.Services.AddTasksModule(builder.Configuration);
@@ -113,7 +103,6 @@ public class Program
             Predicate = _ => true,
             ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
         });
-        app.MapHealthChecksUI();
 
         app.Run();
     }
