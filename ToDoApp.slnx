@@ -1,0 +1,52 @@
+<Solution>
+  <Folder Name="/meta/">
+    <File Path=".editorconfig" />
+    <File Path=".github/workflows/dotnet.yml" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+    <File Path="README.md" />
+  </Folder>
+  <Folder Name="/src/" />
+  <Folder Name="/src/Bootstrapper/">
+    <Project Path="src/Bootstrapper/ToDoApp.Client.Blazor/ToDoApp.Client.Blazor.csproj" />
+    <Project Path="src/Bootstrapper/ToDoApp.Server.API/ToDoApp.Server.API.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/" />
+  <Folder Name="/src/Modules/Emails/">
+    <Project Path="src/Modules/Emails/ToDoApp.Modules.Emails.API/ToDoApp.Modules.Emails.API.csproj" />
+    <Project Path="src/Modules/Emails/ToDoApp.Modules.Emails.Application/ToDoApp.Modules.Emails.Application.csproj" />
+    <Project Path="src/Modules/Emails/ToDoApp.Modules.Emails.Domain/ToDoApp.Modules.Emails.Domain.csproj" />
+    <Project Path="src/Modules/Emails/ToDoApp.Modules.Emails.Infrastructure/ToDoApp.Modules.Emails.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/Emails/Tests/">
+    <Project Path="src/Modules/Emails/Tests/ToDoApp.Modules.Emails.Tests/ToDoApp.Modules.Emails.Tests.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/Tasks/">
+    <Project Path="src/Modules/Tasks/ToDoApp.Modules.Tasks.API/ToDoApp.Modules.Tasks.API.csproj" />
+    <Project Path="src/Modules/Tasks/ToDoApp.Modules.Tasks.Application/ToDoApp.Modules.Tasks.Application.csproj" />
+    <Project Path="src/Modules/Tasks/ToDoApp.Modules.Tasks.Domain/ToDoApp.Modules.Tasks.Domain.csproj" />
+    <Project Path="src/Modules/Tasks/ToDoApp.Modules.Tasks.Infrastructure/ToDoApp.Modules.Tasks.Infrastructure.csproj" />
+    <Project Path="src/Modules/Tasks/ToDoApp.Modules.Tasks.Persistence/ToDoApp.Modules.Tasks.Persistence.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/Tasks/Tests/">
+    <Project Path="src/Modules/Tasks/Tests/ToDoApp.Module.Tasks.Tests/ToDoApp.Module.Tasks.Tests.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/Users/">
+    <Project Path="src/Modules/Users/ToDoApp.Modules.Users.API/ToDoApp.Modules.Users.API.csproj" />
+    <Project Path="src/Modules/Users/ToDoApp.Modules.Users.Contracts/ToDoApp.Modules.Users.Contracts.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/Users/Tests/">
+    <Project Path="src/Modules/Users/Tests/ToDoApp.Modules.Users.Tests/ToDoApp.Modules.Users.Tests.csproj" />
+  </Folder>
+  <Folder Name="/src/Shared/">
+    <Project Path="src/Shared/ToDoApp.Common.Tests/ToDoApp.Common.Tests.csproj" />
+    <Project Path="src/Shared/ToDoApp.Common/ToDoApp.Common.csproj" />
+    <Project Path="src/Shared/ToDoApp.EventBus.MassTransit/ToDoApp.EventBus.MassTransit.csproj" />
+    <Project Path="src/Shared/ToDoApp.EventBus/ToDoApp.EventBus.csproj" />
+    <Project Path="src/Shared/ToDoApp.SyncBus/ToDoApp.SyncBus.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/ToDoApp.Architecture.Tests/ToDoApp.Architecture.Tests.csproj" />
+    <Project Path="tests/ToDoApp.EndToEnd.Tests/ToDoApp.EndToEnd.Tests.csproj" />
+  </Folder>
+</Solution>
