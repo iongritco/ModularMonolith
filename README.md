@@ -1,7 +1,7 @@
 [![.NET](https://github.com/iongritco/ModularMonolith/actions/workflows/dotnet.yml/badge.svg)](https://github.com/iongritco/ModularMonolith/actions/workflows/dotnet.yml)
 
 # ModularMonolith
-A playground for experimenting projects with a Modular Monolith Architecture - DDD, CQRS, MediatR, .NET 9, Entity Framework Core
+A playground for experimenting projects with a Modular Monolith Architecture - DDD, CQRS, MediatR, .NET 10, Entity Framework Core
 - Tasks and Emails modules implement DDD with CQRS
 - UsersModule uses a Vertical Slice Architecture, demonstrating that each module can adopt its own design approach
 
