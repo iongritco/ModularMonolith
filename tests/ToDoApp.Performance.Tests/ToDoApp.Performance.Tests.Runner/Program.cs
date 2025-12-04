@@ -1,172 +1,165 @@
-﻿using System.Diagnostics;
-using System.Net;
-using System.Text;
-using System.Text.Json;
-using Microsoft.Extensions.Configuration;
-using Microsoft.FSharp.Core;
+﻿using Microsoft.Extensions.Configuration;
 using NBomber.Contracts;
 using NBomber.Contracts.Stats;
 using NBomber.CSharp;
-using NBomber.Plugins.Http.CSharp;
+using NBomber.Http.CSharp;
+using System.Diagnostics;
+using System.Net;
+using System.Text;
+using System.Text.Json;
 
-namespace ToDoApp.Performance.Tests.Runner
+namespace ToDoApp.Performance.Tests.Runner;
+
+public class Program
 {
-    public class Program
+    private static string? _username;
+    private static string? _password;
+    private static string? _host;
+    private static string? _token;
+
+    static void Main()
     {
-        private static string? _token;
-        private static string? _username;
-        private static string? _password;
-        private static string? _host;
+        var builder = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json", optional: false);
 
-        static void Main()
-        {
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", optional: false);
+        var config = builder.Build();
+        _username = config["Username"];
+        _password = config["Password"];
+        _host = config["Host"];
 
-            var config = builder.Build();
-            _username = config["Username"];
-            _password = config["Password"];
-            _host = config["Host"];
+        var getTokenScenario = GetTokeScenario();
+        var addTaskScenario = AddTaskScenario();
+        var getTasksScenario = GetTasksScenario();
+        var getUserScenario = GetUserScenario();
 
-            var getTokenScenario = GetTokeScenario();
-            var addTaskScenario = AddTaskScenario();
-            var getTasksScenario = GetTasksScenario();
-            var getUserScenario = GetUserScenario();
+        var stats = NBomberRunner
+            .RegisterScenarios(
+                getTokenScenario,
+                addTaskScenario,
+                getTasksScenario,
+                getUserScenario)
+            .Run();
 
-            var stats = NBomberRunner
-                .RegisterScenarios(
-                    getTokenScenario,
-                    addTaskScenario, 
-                    getTasksScenario, 
-                    getUserScenario)
-                .Run();
+        var htmlReport = stats.ReportFiles.SingleOrDefault(x => x.ReportFormat.Equals(ReportFormat.Html))?.FilePath;
+        var fullPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, htmlReport);
+        Process.Start(@"cmd.exe ", @"/c " + fullPath);
 
-            var htmlReport = stats.ReportFiles.SingleOrDefault(x => x.ReportFormat.Equals(ReportFormat.Html))?.FilePath;
-            var fullPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, htmlReport?.Substring(2) ?? string.Empty);
-            Process.Start(@"cmd.exe ", @"/c " + fullPath);
+        Console.ReadKey();
+    }
 
-            Console.ReadKey();
-        }
-
-        private static Scenario GetUserScenario()
-        {
-            var getUser = Step.Create("get_user",
-                clientFactory: HttpClientFactory.Create("getUserClient"),
-                execute: async context =>
-                {
-                    if (string.IsNullOrEmpty(_token))
-                    {
-                        await SetToken(context);
-                    }
-                    var request = Http.CreateRequest("GET", $"{_host}/api/users/me/name")
-                        .WithHeader("Authorization", $"Bearer {_token}");
-
-                    return await Http.Send(request, context);
-                });
-
-            var getScenario = ScenarioBuilder
-                .CreateScenario("get_user", getUser)
-                .WithWarmUpDuration(TimeSpan.FromSeconds(5))
-                .WithLoadSimulations(
-                    Simulation.InjectPerSec(rate: 5, during: TimeSpan.FromSeconds(30))
-                );
-            return getScenario;
-        }
-
-        private static Scenario GetTokeScenario()
-        {
-            var getToken = Step.Create("get_token",
-                clientFactory: HttpClientFactory.Create("getTokenClient"),
-                execute: SetToken);
-
-            var getScenario = ScenarioBuilder
-                .CreateScenario("get_token", getToken)
-                .WithWarmUpDuration(TimeSpan.FromSeconds(5))
-                .WithLoadSimulations(
-                    Simulation.InjectPerSec(rate: 5, during: TimeSpan.FromSeconds(30))
-                );
-            return getScenario;
-        }
-
-        private static Scenario GetTasksScenario()
-        {
-            var getTasksStep = Step.Create("get_tasks",
-                clientFactory: HttpClientFactory.Create("getTasksClient"),
-                execute: async context =>
-                {
-                    if (string.IsNullOrEmpty(_token))
-                    {
-                        await SetToken(context);
-                    }
-
-                    var request = Http.CreateRequest("GET", $"{_host}/api/tasks")
-                        .WithHeader("Authorization", $"Bearer {_token}");
-
-                    return await Http.Send(request, context);
-                });
-
-            var getScenario = ScenarioBuilder
-                .CreateScenario("get_tasks", getTasksStep)
-                .WithWarmUpDuration(TimeSpan.FromSeconds(5))
-                .WithLoadSimulations(
-                    Simulation.InjectPerSec(rate: 20, during: TimeSpan.FromSeconds(30))
-                );
-            return getScenario;
-        }
-
-        private static Scenario AddTaskScenario()
-        {
-            var addTaskStep = Step.Create("add_task",
-                clientFactory: HttpClientFactory.Create("addTaskClient"),
-                execute: async context =>
-                {
-                    if (string.IsNullOrEmpty(_token))
-                    {
-                        await SetToken(context);
-                    }
-
-                    var task = new { Id = Guid.NewGuid(), Description = "description", Username = "username" };
-                    var body = JsonSerializer.Serialize(task);
-                    var httpBody = new StringContent(body, Encoding.UTF8, "application/json");
-                    var request = Http.CreateRequest("POST", $"{_host}/api/tasks")
-                        .WithHeader("Authorization", $"Bearer {_token}")
-                        .WithHeader("Content-Type", "application/json")
-                        .WithBody(httpBody);
-
-                    return await Http.Send(request, context);
-                });
-            var addScenario = ScenarioBuilder
-                .CreateScenario("add_tasks", addTaskStep)
-                .WithWarmUpDuration(TimeSpan.FromSeconds(5))
-                .WithLoadSimulations(
-                    Simulation.InjectPerSec(rate: 5, during: TimeSpan.FromSeconds(30))
-                );
-            return addScenario;
-        }
-
-        private static async Task<Response> SetToken(IStepContext<HttpClient, Unit> context)
-        {
-            var user = new { Username = _username, Password = _password };
-            var body = JsonSerializer.Serialize(user);
-            var httpBody = new StringContent(body, Encoding.UTF8, "application/json");
-            var request = Http.CreateRequest("POST", $"{_host}/api/users/login")
-                .WithHeader("Content-Type", "application/json")
-                .WithBody(httpBody);
-
-            var result = await Http.Send(request, context);
-            var isSuccessful = result.StatusCode == (int?)HttpStatusCode.OK;
-            if (isSuccessful)
+    private static ScenarioProps GetUserScenario()
+    {
+        var httpClient = Http.CreateDefaultClient();
+        var getScenario = Scenario
+            .Create("get_user", async context =>
             {
-                var content = result.Payload as HttpResponseMessage;
-                var token = await content?.Content.ReadAsStringAsync()!;
                 if (string.IsNullOrEmpty(_token))
                 {
-                    _token = token;
+                    await SetToken(context, httpClient);
                 }
-            }
 
-            return result;
+                var request = Http.CreateRequest("GET", $"{_host}/api/users/me/name")
+                    .WithHeader("Authorization", $"Bearer {_token}");
+
+                return await Http.Send(httpClient, request);
+            })
+            .WithWarmUpDuration(TimeSpan.FromSeconds(5))
+            .WithLoadSimulations(
+                Simulation.Inject(rate: 5, TimeSpan.FromSeconds(1), during: TimeSpan.FromSeconds(30))
+            );
+
+        return getScenario;
+    }
+
+    private static ScenarioProps GetTokeScenario()
+    {
+        var httpClient = Http.CreateDefaultClient();
+        var getTokenScenario = Scenario
+            .Create("get_token", async context =>
+            {
+                return await GetToken(context, httpClient);
+            })
+            .WithWarmUpDuration(TimeSpan.FromSeconds(5))
+            .WithLoadSimulations(
+                Simulation.Inject(rate: 5, TimeSpan.FromSeconds(1), during: TimeSpan.FromSeconds(30))
+            );
+
+        return getTokenScenario;
+    }
+
+    private static ScenarioProps GetTasksScenario()
+    {
+        var httpClient = Http.CreateDefaultClient();
+        var getScenario = Scenario
+            .Create("get_tasks", async context =>
+            {
+                if (string.IsNullOrEmpty(_token))
+                {
+                    await SetToken(context, httpClient);
+                }
+
+                var request = Http.CreateRequest("GET", $"{_host}/api/tasks")
+                    .WithHeader("Authorization", $"Bearer {_token}");
+
+                return await Http.Send(httpClient, request);
+            })
+            .WithWarmUpDuration(TimeSpan.FromSeconds(5))
+            .WithLoadSimulations(
+                Simulation.Inject(rate: 20, TimeSpan.FromSeconds(1), during: TimeSpan.FromSeconds(30))
+            );
+
+        return getScenario;
+    }
+
+    private static ScenarioProps AddTaskScenario()
+    {
+        var httpClient = Http.CreateDefaultClient();
+        var getScenario = Scenario
+            .Create("add_task", async context =>
+            {
+                if (string.IsNullOrEmpty(_token))
+                {
+                    await SetToken(context, httpClient);
+                }
+
+                var task = new { Id = Guid.NewGuid(), Description = "description", Username = "username" };
+                var body = JsonSerializer.Serialize(task);
+                var httpBody = new StringContent(body, Encoding.UTF8, "application/json");
+                var request = Http.CreateRequest("POST", $"{_host}/api/tasks")
+                    .WithHeader("Authorization", $"Bearer {_token}")
+                    .WithHeader("Content-Type", "application/json")
+                    .WithBody(httpBody);
+
+                return await Http.Send(httpClient, request);
+            })
+            .WithWarmUpDuration(TimeSpan.FromSeconds(5))
+            .WithLoadSimulations(
+                Simulation.Inject(rate: 5, TimeSpan.FromSeconds(1), during: TimeSpan.FromSeconds(30))
+            );
+
+        return getScenario;
+    }
+
+    private static async Task<Response<HttpResponseMessage>> GetToken(IScenarioContext context, HttpClient httpClient)
+    {
+        var user = new { Username = _username, Password = _password };
+        var body = JsonSerializer.Serialize(user);
+        var httpBody = new StringContent(body, Encoding.UTF8, "application/json");
+        var request = Http.CreateRequest("POST", $"{_host}/api/users/login")
+            .WithHeader("Content-Type", "application/json")
+            .WithBody(httpBody);
+
+        return await Http.Send(httpClient, request);
+    }
+
+    private static async Task SetToken(IScenarioContext context, HttpClient httpClient)
+    {
+        var tokenRequest = await GetToken(context, httpClient);
+        if (tokenRequest.StatusCode == HttpStatusCode.OK.ToString())
+        {
+            var responseValue = tokenRequest.Payload.Value;
+            _token = await responseValue.Content.ReadAsStringAsync();
         }
     }
 }

@@ -1,5 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<ServerGarbageCollection>false</ServerGarbageCollection>
+		<ConcurrentGarbageCollection>true</ConcurrentGarbageCollection>
+	</PropertyGroup>
+	
 	<ItemGroup>
 		<PackageReference Include="NBomber" />
 		<PackageReference Include="NBomber.Http" />
