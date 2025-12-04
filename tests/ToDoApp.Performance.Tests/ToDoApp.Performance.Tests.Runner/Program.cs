@@ -54,20 +54,17 @@ public class Program
         var getScenario = Scenario
             .Create("get_user", async context =>
             {
-                if (string.IsNullOrEmpty(_token))
-                {
-                    await SetToken(context, httpClient);
-                }
-
                 var request = Http.CreateRequest("GET", $"{_host}/api/users/me/name")
                     .WithHeader("Authorization", $"Bearer {_token}");
 
                 return await Http.Send(httpClient, request);
             })
             .WithWarmUpDuration(TimeSpan.FromSeconds(5))
-            .WithLoadSimulations(
-                Simulation.Inject(rate: 5, TimeSpan.FromSeconds(1), during: TimeSpan.FromSeconds(30))
-            );
+            .WithLoadSimulations(Simulation.Inject(rate: 5, TimeSpan.FromSeconds(1), during: TimeSpan.FromSeconds(30)))
+            .WithInit(async ctx =>
+            {
+                await SetToken(ctx, httpClient);
+            });
 
         return getScenario;
     }
@@ -78,12 +75,21 @@ public class Program
         var getTokenScenario = Scenario
             .Create("get_token", async context =>
             {
-                return await GetToken(context, httpClient);
+                var user = new { Username = _username, Password = _password };
+                var body = JsonSerializer.Serialize(user);
+                var httpBody = new StringContent(body, Encoding.UTF8, "application/json");
+                var request = Http.CreateRequest("POST", $"{_host}/api/users/login")
+                    .WithHeader("Content-Type", "application/json")
+                    .WithBody(httpBody);
+
+                return await Http.Send(httpClient, request);
             })
             .WithWarmUpDuration(TimeSpan.FromSeconds(5))
-            .WithLoadSimulations(
-                Simulation.Inject(rate: 5, TimeSpan.FromSeconds(1), during: TimeSpan.FromSeconds(30))
-            );
+            .WithLoadSimulations(Simulation.Inject(rate: 5, TimeSpan.FromSeconds(1), during: TimeSpan.FromSeconds(30)))
+            .WithInit(async ctx =>
+            {
+                await SetToken(ctx, httpClient);
+            });
 
         return getTokenScenario;
     }
@@ -94,20 +100,17 @@ public class Program
         var getScenario = Scenario
             .Create("get_tasks", async context =>
             {
-                if (string.IsNullOrEmpty(_token))
-                {
-                    await SetToken(context, httpClient);
-                }
-
                 var request = Http.CreateRequest("GET", $"{_host}/api/tasks")
                     .WithHeader("Authorization", $"Bearer {_token}");
 
                 return await Http.Send(httpClient, request);
             })
             .WithWarmUpDuration(TimeSpan.FromSeconds(5))
-            .WithLoadSimulations(
-                Simulation.Inject(rate: 20, TimeSpan.FromSeconds(1), during: TimeSpan.FromSeconds(30))
-            );
+            .WithLoadSimulations(Simulation.Inject(rate: 20, TimeSpan.FromSeconds(1), during: TimeSpan.FromSeconds(30)))
+            .WithInit(async ctx =>
+            {
+                await SetToken(ctx, httpClient);
+            });
 
         return getScenario;
     }
@@ -118,11 +121,6 @@ public class Program
         var getScenario = Scenario
             .Create("add_task", async context =>
             {
-                if (string.IsNullOrEmpty(_token))
-                {
-                    await SetToken(context, httpClient);
-                }
-
                 var task = new { Id = Guid.NewGuid(), Description = "description", Username = "username" };
                 var body = JsonSerializer.Serialize(task);
                 var httpBody = new StringContent(body, Encoding.UTF8, "application/json");
@@ -134,14 +132,16 @@ public class Program
                 return await Http.Send(httpClient, request);
             })
             .WithWarmUpDuration(TimeSpan.FromSeconds(5))
-            .WithLoadSimulations(
-                Simulation.Inject(rate: 5, TimeSpan.FromSeconds(1), during: TimeSpan.FromSeconds(30))
-            );
+            .WithLoadSimulations(Simulation.Inject(rate: 5, TimeSpan.FromSeconds(1), during: TimeSpan.FromSeconds(30)))
+            .WithInit(async ctx =>
+            {
+                await SetToken(ctx, httpClient);
+            }); ;
 
         return getScenario;
     }
 
-    private static async Task<Response<HttpResponseMessage>> GetToken(IScenarioContext context, HttpClient httpClient)
+    private static async Task SetToken(IScenarioInitContext context, HttpClient httpClient)
     {
         var user = new { Username = _username, Password = _password };
         var body = JsonSerializer.Serialize(user);
@@ -150,12 +150,7 @@ public class Program
             .WithHeader("Content-Type", "application/json")
             .WithBody(httpBody);
 
-        return await Http.Send(httpClient, request);
-    }
-
-    private static async Task SetToken(IScenarioContext context, HttpClient httpClient)
-    {
-        var tokenRequest = await GetToken(context, httpClient);
+        var tokenRequest = await Http.Send(httpClient, request);
         if (tokenRequest.StatusCode == HttpStatusCode.OK.ToString())
         {
             var responseValue = tokenRequest.Payload.Value;

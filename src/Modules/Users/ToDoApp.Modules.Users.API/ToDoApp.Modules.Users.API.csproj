@@ -4,7 +4,6 @@
 		<PackageReference Include="Mapster" />
 		<PackageReference Include="MediatR" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" />
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
         <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
         <FrameworkReference Include="Microsoft.AspNetCore.App" />
 	</ItemGroup>
